@@ -1,0 +1,6 @@
+1. Hien hinh ban tay khi mouse over lich thang
+2. Luu giu 2 thong tin: - Ngay thang nam hien tai(thoi gian cua server)
+						- Ngay thang nam nguoi dung dang lua chon(?)
+						- Ngay dj dau tien
+3. Thu nghiem voi 1 tuan dau tien
+4. Thong tin trong 1 o ngay thang: Ngay duong, ngay dj, thong tin ngay am (Vd: 1/2Ð)
