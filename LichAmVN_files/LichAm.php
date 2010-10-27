@@ -357,15 +357,10 @@
 -->
 
 <!-- Hadd -->
-<div>
-<div id="currentDay">
-Ngày <?php echo date("d",time()) ?>
-</div>
-<div id="currentMonth">
-Tháng <?php echo date("m",time()) ?>
-</div>
-Năm <?php echo date("Y",time())?>
-</div>
+
+Ngày <div id="currentDay"><?php echo date("d",time()) ?></div>
+Tháng <div id="currentMonth"><?php echo date("m",time()) ?></div>
+Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 
 <table width="400" align="center" border="1" cellpadding="0" cellspacing="0">
 <tbody><tr>
@@ -373,13 +368,18 @@ Năm <?php echo date("Y",time())?>
 
 
 
-
+<script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript">
-//alert(document.getElementById("currentDay").innerHTML);
-
+	//alert(document.getElementById("currentDay").innerHTML);
+	var currentDay = INT(document.getElementById("currentDay").innerHTML);
+	var currentMonth = INT(document.getElementById("currentMonth").innerHTML);
+	var currentYear = INT(document.getElementById("currentYear").innerHTML);
+	
+	loadNewMonth(currentDay,currentMonth,currentYear);
+	document.getElementById("duong6").innerHTML='AAAAAA';
 </script>
 
-<script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
+
 <link rel="stylesheet" type="text/css" href="licham_data/licham.css">
 
 
