@@ -144,3 +144,62 @@ function SunLongitude(jdn) {
 function getSolarTerm(dayNumber, timeZone) {
 	return INT(SunLongitude(dayNumber - 0.5 - timeZone/24.0) / PI * 12);
 }
+
+/*
+ * @Hadd
+ * Load new Month
+ */
+ function jdn(dd, mm, yy) {
+	var a = INT((14 - mm) / 12);
+	var y = yy+4800-a;
+	var m = mm+12*a-3;
+	var jd = dd + INT((153*m+2)/5) + 365*y + INT(y/4) - INT(y/100) + INT(y/400) - 32045;
+	return jd;
+}
+function putInCell(id,duong,am) {
+//alert(id);
+	document.getElementById("duong6").innerHTML='AAAAAA';
+} 
+
+
+function loadTable(mm, yy) {
+	var jd = jdn(01,mm,yy);
+	var id = (jd+1)%7;
+	putInCell("duong" + id,1,2);
+	
+
+	/*
+	var i, j, k, solar, lunar, cellClass, solarClass, lunarClass;
+	var currentMonth = getMonth(mm, yy);
+	if (currentMonth.length == 0) return;
+	var ld1 = currentMonth[0];
+	var emptyCells = (ld1.jd + 1) % 7;
+	var MonthHead = mm + "/" + yy;
+	var LunarHead = getYearCanChi(ld1.year);
+	var res = "";
+	res += ('<table class="thang" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
+	res += printHead(mm, yy);
+	for (i = 0; i < 6; i++) {
+		res += ("<tr>\n");
+		for (j = 0; j < 7; j++) {
+			k = 7 * i + j;
+			if (k < emptyCells || k >= emptyCells + currentMonth.length) {
+				res += printEmptyCell();
+			} else {
+				solar = k - emptyCells + 1;
+				ld1 = currentMonth[k - emptyCells];
+				res += printCell(ld1, solar, mm, yy);
+			}
+		}
+		res += ("</tr>\n");
+	}
+	res += ('</table>\n');
+	return res;
+	*/
+}
+function loadNewMonth(day, month, year) {
+	loadTable(month, year);
+	return false;
+}
+
+
