@@ -156,16 +156,34 @@ function getSolarTerm(dayNumber, timeZone) {
 	var jd = dd + INT((153*m+2)/5) + 365*y + INT(y/4) - INT(y/100) + INT(y/400) - 32045;
 	return jd;
 }
-function putInCell(id,duong,am) {
-//alert(id);
-	document.getElementById("duong6").innerHTML='AAAAAA';
+function putInCell(id,duong,am,dis) {
+	document.getElementById("duong"+id).innerHTML=duong;
+	document.getElementById("am"+id).innerHTML=am;
+	if(dis==1) {
+		document.getElementById("duong"+id).className = "duongDis";
+		document.getElementById("am"+id).className = "amDis";
+	}
 } 
 
 
 function loadTable(mm, yy) {
 	var jd = jdn(01,mm,yy);
-	var id = (jd+1)%7;
-	putInCell("duong" + id,1,2);
+	var startId = (jd+1)%7;
+	//putInCell(startId,1,2);
+	// jd - startId;
+	var k = 0,duong1=0,duong2=0,duong3=0;
+	for (i = 0; i < 6; i++) {		
+		for (j = 0; j < 7; j++) {
+			k = 7 * i + j;
+			if (k < startId){
+				putInCell(k,1,2,1);
+			}
+			else {
+				duong2++;
+				putInCell(k,duong2,3,0);
+			}
+		}		
+	}
 	
 
 	/*

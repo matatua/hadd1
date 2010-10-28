@@ -348,6 +348,45 @@
 
 }
 
+<!-- hadd -->
+.col {
+   padding: 1em;
+}
+    
+.colCN {
+   float: left;
+   width: 57px;
+}
+    
+.colT2T6 {
+   float: left;   
+   width: 57px;
+}
+
+.colT2T6 .duong {
+	padding-left:5px;text-align:left;font-size:110%;color:black;
+}
+
+.duongDis {
+	padding-left:5px;text-align:left;font-size:110%;color:gray
+}
+
+.colT2T6 .am, .colT7 .am {text-align:right;font-size:80%;line-height:80%;color:blue}
+
+.colCN .am {text-align:right;font-size:80%;line-height:80%;color:red}
+
+.amDis {text-align:right;font-size:80%;line-height:80%;color:gray}
+
+.colT7 {
+   float: left;   
+   width: 58px;
+}
+.calMonthHead {
+	text-align: center;
+	background: #FFFFCC;
+	font-weight: bold;
+}
+
 </style></head><body>
 
 <!--
@@ -362,32 +401,13 @@ Ngày <div id="currentDay"><?php echo date("d",time()) ?></div>
 Tháng <div id="currentMonth"><?php echo date("m",time()) ?></div>
 Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 
-<table width="400" align="center" border="1" cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td>
-
-
+<div style="width:400px; margin-left: auto; margin-right: auto ;">
 
 <script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
-<script language="JavaScript" type="text/javascript">
-	//alert(document.getElementById("currentDay").innerHTML);
-	var currentDay = INT(document.getElementById("currentDay").innerHTML);
-	var currentMonth = INT(document.getElementById("currentMonth").innerHTML);
-	var currentYear = INT(document.getElementById("currentYear").innerHTML);
-	
-	loadNewMonth(currentDay,currentMonth,currentYear);
-	document.getElementById("duong6").innerHTML='AAAAAA';
-</script>
-
 
 <link rel="stylesheet" type="text/css" href="licham_data/licham.css">
 
-
-
-<table width="100%" border="0">
-
-<tbody><tr>
-<td>
+<div width="100%">
 	<table class="thang" width="100%" border="0" cellpadding="1" cellspacing="1">
 	<tbody><tr>
 	<td colspan="2" id="thangduong" class="thangduong">Tháng 10 năm 2010</td>
@@ -422,147 +442,101 @@ Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 	</tr>
 
 	</tbody></table>
-</td>
-</tr>
 
-<tr>
-<td>
-	<table class="thang" width="100%" border="1" cellpadding="2" cellspacing="2">
-	
-	<tbody><tr class="ngaytuan">
-	<td>CN</td> <td>T2</td> <td>T3</td> <td>T4</td> <td>T5</td> <td>T6</td> <td>T7</td>
-	</tr>
+	<div style="position:relative;width:100%;" >
+		<div class="col colCN calMonthHead">CN</div>
+		<div class="col colT2T6 calMonthHead">T2</div>
+		<div class="col colT2T6 calMonthHead">T3</div>
+		<div class="col colT2T6 calMonthHead">T4</div>
+		<div class="col colT2T6 calMonthHead">T5</div>
+		<div class="col colT2T6 calMonthHead">T6</div>    
+		<div class="col colT7 calMonthHead">T7</div>
+	</div>
+	<div style="position:relative;width:100%;">
+		<div id="cell0" class="col colCN" ><div class="duong" id="duong0">&nbsp;</div><div class="am" id="am0">&nbsp;</div></div>
+		<div id="cell1" class="col colT2T6"><div class="duong" id="duong1">&nbsp;</div><div class="am" id="am1">&nbsp;</div></div>
+		<div id="cell2" class="col colT2T6"><div class="duong" id="duong2">&nbsp;</div><div class="am" id="am2">&nbsp;</div></div>
+		<div id="cell3" class="col colT2T6"><div class="duong" id="duong3">&nbsp;</div><div class="am" id="am3">&nbsp;</div></div>
+		<div id="cell4" class="col colT2T6"><div class="duong" id="duong4">&nbsp;</div><div class="am" id="am4">&nbsp;</div></div>
+		<div id="cell5" class="col colT2T6"><div class="duong" id="duong5">&nbsp;</div><div class="am" id="am5">&nbsp;</div></div>
+		<div id="cell6" class="col colT7"><div class="duong" id="duong6">&nbsp;</div><div class="am" id="am6">&nbsp;</div></div>
+	</div>
 
-	<tr class="normal">
-<td class="ngaythang" id="cell0" onclick="showDayInfo(0);"><div class="cn" id="duong0">&nbsp;</div><div class="am" id="am0">&nbsp;</div></td>
-<td class="ngaythang" id="cell1" onclick="showDayInfo(1);"><div class="t2t6" id="duong1">&nbsp;</div><div class="am" id="am1">&nbsp;</div></td>
-<td class="ngaythang" id="cell2" onclick="showDayInfo(2);"><div class="t2t6" id="duong2">&nbsp;</div><div class="am" id="am2">&nbsp;</div></td>
-<td class="ngaythang" id="cell3" onclick="showDayInfo(3);"><div class="t2t6" id="duong3">&nbsp;</div><div class="am" id="am3">&nbsp;</div></td>
-<td class="ngaythang" id="cell4" onclick="showDayInfo(4);"><div class="t2t6" id="duong4">&nbsp;</div><div class="am" id="am4">&nbsp;</div></td>
-<td class="ngaythang" id="cell5" onclick="showDayInfo(5);"><div class="t2t6" id="duong5">&nbsp;</div><div class="am" id="am5">&nbsp;</div></td>
-<td class="ngaythang" id="cell6" onclick="showDayInfo(6);"><div class="t7" id="duong6">&nbsp;</div><div class="am" id="am6">&nbsp;</div></td>
-</tr>
-<tr class="normal">
-<td class="ngaythang" id="cell7" title="Chủ Nhật 3/10/2010 - 26/8 Canh Dần" onclick="showDayInfo(7,26,8,2010,0,30,2455473,3,10,2010);"><div class="cn">3</div><div class="am">26</div></td>
-<td class="ngaythang" id="cell8" title="Thứ Hai 4/10/2010 - 27/8 Canh Dần" onclick="showDayInfo(8,27,8,2010,0,30,2455474,4,10,2010);"><div class="t2t6">4</div><div class="am">27</div></td>
-<td class="ngaythang" id="cell9" title="Thứ Ba 5/10/2010 - 28/8 Canh Dần" onclick="showDayInfo(9,28,8,2010,0,30,2455475,5,10,2010);"><div class="t2t6">5</div><div class="am">28</div></td>
-<td class="ngaythang" id="cell10" title="Thứ Tư 6/10/2010 - 29/8 Canh Dần" onclick="showDayInfo(10,29,8,2010,0,30,2455476,6,10,2010);"><div class="t2t6">6</div><div class="am">29</div></td>
-<td class="ngaythang" id="cell11" title="Thứ Năm 7/10/2010 - 30/8 Canh Dần" onclick="showDayInfo(11,30,8,2010,0,30,2455477,7,10,2010);"><div class="t2t6">7</div><div class="am">30</div></td>
-<td class="ngaythang" id="cell12" title="Thứ Sáu 8/10/2010 - 1/9 Canh Dần" onclick="showDayInfo(12,1,9,2010,0,29,2455478,8,10,2010);"><div class="t2t6">8</div><div class="am">1/9T</div></td>
-<td class="ngaythang" id="cell13" title="Thứ Bảy 9/10/2010 - 2/9 Canh Dần" onclick="showDayInfo(13,2,9,2010,0,29,2455479,9,10,2010);"><div class="t7">9</div><div class="am">2</div></td>
-</tr>
-<tr class="normal">
-<td class="ngaythang" id="cell14" title="Chủ Nhật 10/10/2010 - 3/9 Canh Dần" onclick="showDayInfo(14,3,9,2010,0,29,2455480,10,10,2010);"><div class="cn">10</div><div class="am">3</div></td>
-<td class="ngaythang" id="cell15" title="Thứ Hai 11/10/2010 - 4/9 Canh Dần" onclick="showDayInfo(15,4,9,2010,0,29,2455481,11,10,2010);"><div class="t2t6">11</div><div class="am">4</div></td>
-<td class="ngaythang" id="cell16" title="Thứ Ba 12/10/2010 - 5/9 Canh Dần" onclick="showDayInfo(16,5,9,2010,0,29,2455482,12,10,2010);"><div class="t2t6">12</div><div class="am">5</div></td>
-<td class="ngaythang" id="cell17" title="Thứ Tư 13/10/2010 - 6/9 Canh Dần" onclick="showDayInfo(17,6,9,2010,0,29,2455483,13,10,2010);"><div class="t2t6">13</div><div class="am">6</div></td>
-<td class="ngaythang" id="cell18" title="Thứ Năm 14/10/2010 - 7/9 Canh Dần" onclick="showDayInfo(18,7,9,2010,0,29,2455484,14,10,2010);"><div class="t2t6">14</div><div class="am">7</div></td>
-<td class="ngaythang" id="cell19" title="Thứ Sáu 15/10/2010 - 8/9 Canh Dần" onclick="showDayInfo(19,8,9,2010,0,29,2455485,15,10,2010);"><div class="t2t6">15</div><div class="am">8</div></td>
-<td class="ngaythang" id="cell20" title="Thứ Bảy 16/10/2010 - 9/9 Canh Dần" onclick="showDayInfo(20,9,9,2010,0,29,2455486,16,10,2010);"><div class="t7">16</div><div class="am">9</div></td>
-</tr>
-<tr class="normal">
-<td class="ngaythang" id="cell21" title="Chủ Nhật 17/10/2010 - 10/9 Canh Dần" onclick="showDayInfo(21,10,9,2010,0,29,2455487,17,10,2010);"><div class="cn">17</div><div class="am">10</div></td>
-<td class="ngaythang" id="cell22" title="Thứ Hai 18/10/2010 - 11/9 Canh Dần" onclick="showDayInfo(22,11,9,2010,0,29,2455488,18,10,2010);"><div class="t2t6">18</div><div class="am">11</div></td>
-<td class="ngaythang" id="cell23" title="Thứ Ba 19/10/2010 - 12/9 Canh Dần" onclick="showDayInfo(23,12,9,2010,0,29,2455489,19,10,2010);"><div class="t2t6">19</div><div class="am">12</div></td>
-<td class="ngaythang" id="cell24" title="Thứ Tư 20/10/2010 - 13/9 Canh Dần" onclick="showDayInfo(24,13,9,2010,0,29,2455490,20,10,2010);"><div class="t2t6">20</div><div class="am">13</div></td>
-<td class="ngaythang" id="cell25" title="Thứ Năm 21/10/2010 - 14/9 Canh Dần" onclick="showDayInfo(25,14,9,2010,0,29,2455491,21,10,2010);"><div class="t2t6">21</div><div class="am">14</div></td>
-<td class="ngaythang" id="cell26" title="Thứ Sáu 22/10/2010 - 15/9 Canh Dần" onclick="showDayInfo(26,15,9,2010,0,29,2455492,22,10,2010);"><div class="t2t6">22</div><div class="am">15</div></td>
-<td class="ngaythang" id="cell27" title="Thứ Bảy 23/10/2010 - 16/9 Canh Dần" onclick="showDayInfo(27,16,9,2010,0,29,2455493,23,10,2010);"><div class="t7">23</div><div class="am">16</div></td>
-</tr>
-<tr class="normal">
-<td class="homnay" id="cell28" title="Chủ Nhật 24/10/2010 - 17/9 Canh Dần" onclick="showDayInfo(28,17,9,2010,0,29,2455494,24,10,2010);"><div class="cn">24</div><div class="am">17</div></td>
-<td class="ngaythang" id="cell29" title="Thứ Hai 25/10/2010 - 18/9 Canh Dần" onclick="showDayInfo(29,18,9,2010,0,29,2455495,25,10,2010);"><div class="t2t6">25</div><div class="am">18</div></td>
-<td class="ngaythang" id="cell30" title="Thứ Ba 26/10/2010 - 19/9 Canh Dần" onclick="showDayInfo(30,19,9,2010,0,29,2455496,26,10,2010);"><div class="t2t6">26</div><div class="am">19</div></td>
-<td class="ngaythang" id="cell31" title="Thứ Tư 27/10/2010 - 20/9 Canh Dần" onclick="showDayInfo(31,20,9,2010,0,29,2455497,27,10,2010);"><div class="t2t6">27</div><div class="am">20</div></td>
-<td class="ngaythang" id="cell32" title="Thứ Năm 28/10/2010 - 21/9 Canh Dần" onclick="showDayInfo(32,21,9,2010,0,29,2455498,28,10,2010);"><div class="t2t6">28</div><div class="am">21</div></td>
-<td class="ngaythang" id="cell33" title="Thứ Sáu 29/10/2010 - 22/9 Canh Dần" onclick="showDayInfo(33,22,9,2010,0,29,2455499,29,10,2010);"><div class="t2t6">29</div><div class="am">22</div></td>
-<td class="ngaythang" id="cell34" title="Thứ Bảy 30/10/2010 - 23/9 Canh Dần" onclick="showDayInfo(34,23,9,2010,0,29,2455500,30,10,2010);"><div class="t7">30</div><div class="am">23</div></td>
-</tr>
-<tr class="normal">
-<td class="ngaythang" id="cell35" title="Chủ Nhật 31/10/2010 - 24/9 Canh Dần" onclick="showDayInfo(35,24,9,2010,0,29,2455501,31,10,2010);"><div class="cn">31</div><div class="am">24</div></td>
-<td class="ngaythang" id="cell36"><div class="cn">&nbsp;</div><div class="am">&nbsp;</div></td>
-<td class="ngaythang" id="cell37"><div class="cn">&nbsp;</div><div class="am">&nbsp;</div></td>
-<td class="ngaythang" id="cell38"><div class="cn">&nbsp;</div><div class="am">&nbsp;</div></td>
-<td class="ngaythang" id="cell39"><div class="cn">&nbsp;</div><div class="am">&nbsp;</div></td>
-<td class="ngaythang" id="cell40"><div class="cn">&nbsp;</div><div class="am">&nbsp;</div></td>
-<td class="ngaythang" id="cell41"><div class="cn">&nbsp;</div><div class="am">&nbsp;</div></td>
-</tr>
 
-	</tbody></table>
+	<div style="position:relative;width:100%;">
+		<form name="NaviForm" method="post">
+		<!--<input name="dd" type="hidden" value="24">-->
+		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2009" title="Năm trước">&lt;&lt;</a> &nbsp;
+		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=9&amp;yy=2010" title="Tháng trước">&lt;</a>	&nbsp;
 
-</td>
-</tr>
+		<select name="dd">
+			<option value="1">1
+		</option><option value="2">2
+		</option><option value="3">3
+		</option><option value="4">4
+		</option><option value="5">5
+		</option><option value="6">6
+		</option><option value="7">7
+		</option><option value="8">8
+		</option><option value="9">9
+		</option><option value="10">10
+		</option><option value="11">11
+		</option><option value="12">12
+		</option><option value="13">13
+		</option><option value="14">14
+		</option><option value="15">15
+		</option><option value="16">16
+		</option><option value="17">17
+		</option><option value="18">18
+		</option><option value="19">19
+		</option><option value="20">20
+		</option><option value="21">21
+		</option><option value="22">22
+		</option><option value="23">23
+		</option><option value="24" selected="selected">24
+		</option><option value="25">25
+		</option><option value="26">26
+		</option><option value="27">27
+		</option><option value="28">28
+		</option><option value="29">29
+		</option><option value="30">30
+		</option><option value="31">31
+		</option></select>/
+		<select name="mm">
+			<option value="1">1
+		</option><option value="2">2
+		</option><option value="3">3
+		</option><option value="4">4
+		</option><option value="5">5
+		</option><option value="6">6
+		</option><option value="7">7
+		</option><option value="8">8
+		</option><option value="9">9
+		</option><option value="10" selected="selected">10
+		</option><option value="11">11
+		</option><option value="12">12
+		</option></select>
+		/ <input name="yy" size="3" value="2010"> 
+		<input value="OK" type="submit">
+		&nbsp;
+		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=11&amp;yy=2010" title="Tháng sau">&gt;</a> 
+		&nbsp;
+		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2011" title="Năm sau">&gt;&gt;</a>
+		&nbsp;&nbsp;
+		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2010" title="Ngày hôm nay">@</a> 
+		&nbsp;
+		</form>
 
-</tbody></table>
-
-<div class="navi-l">
-	<form name="NaviForm" method="post">
-	<!--<input name="dd" type="hidden" value="24">-->
-	<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2009" title="Năm trước">&lt;&lt;</a> &nbsp;
-	<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=9&amp;yy=2010" title="Tháng trước">&lt;</a>	&nbsp;
-
-	<select name="dd">
-		<option value="1">1
-	</option><option value="2">2
-	</option><option value="3">3
-	</option><option value="4">4
-	</option><option value="5">5
-	</option><option value="6">6
-	</option><option value="7">7
-	</option><option value="8">8
-	</option><option value="9">9
-	</option><option value="10">10
-	</option><option value="11">11
-	</option><option value="12">12
-	</option><option value="13">13
-	</option><option value="14">14
-	</option><option value="15">15
-	</option><option value="16">16
-	</option><option value="17">17
-	</option><option value="18">18
-	</option><option value="19">19
-	</option><option value="20">20
-	</option><option value="21">21
-	</option><option value="22">22
-	</option><option value="23">23
-	</option><option value="24" selected="selected">24
-	</option><option value="25">25
-	</option><option value="26">26
-	</option><option value="27">27
-	</option><option value="28">28
-	</option><option value="29">29
-	</option><option value="30">30
-	</option><option value="31">31
-	</option></select>/
-	<select name="mm">
-		<option value="1">1
-	</option><option value="2">2
-	</option><option value="3">3
-	</option><option value="4">4
-	</option><option value="5">5
-	</option><option value="6">6
-	</option><option value="7">7
-	</option><option value="8">8
-	</option><option value="9">9
-	</option><option value="10" selected="selected">10
-	</option><option value="11">11
-	</option><option value="12">12
-	</option></select>
-	/ <input name="yy" size="3" value="2010"> 
-	<input value="OK" type="submit">
-	&nbsp;
-	<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=11&amp;yy=2010" title="Tháng sau">&gt;</a> 
-	&nbsp;
-	<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2011" title="Năm sau">&gt;&gt;</a>
-	&nbsp;&nbsp;
-	<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2010" title="Ngày hôm nay">@</a> 
-	&nbsp;
-	</form>
+	</div>
 
 </div>
-
-</td>
-</tr>
-</tbody></table>
+<script language="JavaScript" type="text/javascript">
+	//alert(document.getElementById("currentDay").innerHTML);
+	var currentDay = INT(document.getElementById("currentDay").innerHTML);
+	var currentMonth = INT(document.getElementById("currentMonth").innerHTML);
+	var currentYear = INT(document.getElementById("currentYear").innerHTML);
+	
+	loadNewMonth(currentDay,currentMonth,currentYear);	
+</script>
 
 </body></html>
