@@ -156,6 +156,22 @@ function getSolarTerm(dayNumber, timeZone) {
 	var jd = dd + INT((153*m+2)/5) + 365*y + INT(y/4) - INT(y/100) + INT(y/400) - 32045;
 	return jd;
 }
+function jdn2day(jd) {
+	var Z, A, alpha, B, C, D, E;
+	Z = jd;
+	if (Z < 2299161) {
+	  A = Z;
+	} else {
+	  alpha = INT((Z-1867216.25)/36524.25);
+	  A = Z + 1 + alpha - INT(alpha/4);
+	}
+	B = A + 1524;
+	C = INT( (B-122.1)/365.25);
+	D = INT( 365.25*C );
+	E = INT( (B-D)/30.6001 );
+	return INT(B - D - INT(30.6001*E));	
+}
+
 function putInCell(id,duong,am,dis) {
 	document.getElementById("duong"+id).innerHTML=duong;
 	document.getElementById("am"+id).innerHTML=am;
@@ -170,13 +186,14 @@ function loadTable(mm, yy) {
 	var jd = jdn(01,mm,yy);
 	var startId = (jd+1)%7;
 	//putInCell(startId,1,2);
-	// jd - startId;
 	var k = 0,duong1=0,duong2=0,duong3=0;
+	duong1 = jdn2day(jd - startId);
 	for (i = 0; i < 6; i++) {		
 		for (j = 0; j < 7; j++) {
 			k = 7 * i + j;
 			if (k < startId){
-				putInCell(k,1,2,1);
+				putInCell(k,duong1,2,1);
+				duong1++;
 			}
 			else {
 				duong2++;
@@ -219,5 +236,3 @@ function loadNewMonth(day, month, year) {
 	loadTable(month, year);
 	return false;
 }
-
-
