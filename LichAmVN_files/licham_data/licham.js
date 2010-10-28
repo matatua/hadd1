@@ -71,12 +71,7 @@ function showDayInfo(cellId, dd, mm, yy, leap, length, jd, sday, smonth, syear) 
 	//document.NaviForm.submit();
 }
 
-function selectCell(cellId) {
-	for (var i=0; i<42; i++) {
-		document.getElementById("cell"+i).className = 'ngaythang';
-	}
-	document.getElementById("cell"+cellId).className = 'homnay';
-}
+
 
 function getYearCanChi(year) {
 	return CAN[(year+6) % 10] + " " + CHI[(year+8) % 12];
@@ -149,6 +144,14 @@ function getSolarTerm(dayNumber, timeZone) {
  * @Hadd
  * Load new Month
  */
+ function selectCell(cellId) {
+	for (var i=0; i<7; i++) {
+	// ToDo: Change this to default background color
+		document.getElementById("cell"+i).style.backgroundColor = 'white';
+	}
+	document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
+}
+ 
  function jdn(dd, mm, yy) {
 	var a = INT((14 - mm) / 12);
 	var y = yy+4800-a;
@@ -234,5 +237,31 @@ function loadTable(mm, yy) {
 }
 function loadNewMonth(day, month, year) {
 	loadTable(month, year);
+	return false;
+}
+
+function selectDay(cellId) {
+	selectCell(cellId);
+	/*
+	//alert('Cell '+cellId+': '+dd+'/'+mm+'/'+yy+" AL = "+sday+"/"+smonth+"/"+syear);
+	document.NaviForm.dd.value = sday;
+	//document.getElementById("thangduong").innerHTML = 'Tháng '+smonth+' năm '+syear;
+	document.getElementById("ngayduong").innerHTML = sday;
+	var dayOfWeek = TUAN[(jd + 1) % 7];
+	document.getElementById("thuduong").innerHTML = dayOfWeek;
+	document.getElementById("ngayam").innerHTML = dd;
+	var nhuan = (leap == 1) ? ' nhu\u1EADn' : '';
+	var tenthang = 'Th\u00E1ng '+THANG[mm-1]+nhuan+(length == 30 ? ' (\u0110)' : ' (T)');
+	document.getElementById("thangam").innerHTML = tenthang;
+	document.getElementById("namam").innerHTML = 'N\u0103m '+getYearCanChi(yy);
+	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
+	document.getElementById("canchithang").innerHTML = 'Th\u00E1ng '+thang;
+	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
+	document.getElementById("canchingay").innerHTML = 'Ng\u00E0y '+ngay;
+	document.getElementById("canchigio").innerHTML = 'Gi\u1EDD '+getCanHour0(jd)+' '+CHI[0];
+	document.getElementById("tietkhi").innerHTML = 'Ti\u1EBFt '+TIETKHI[getSolarTerm(jd+1, 7.0)];
+	document.getElementById("dayinfo").innerHTML = getDayInfo(dd, mm);
+	document.getElementById("hoangdao").innerHTML = 'Gi\u1EDD ho\u00E0ng \u0111\u1EA1o: '+getGioHoangDao(jd);	
+	*/
 	return false;
 }
