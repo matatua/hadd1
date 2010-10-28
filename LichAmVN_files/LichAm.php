@@ -445,90 +445,34 @@ Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 
 	<div style="position:relative;width:100%;" >
 		<div class="col colCN calMonthHead">CN</div>
-		<div class="col colT2T6 calMonthHead">T2</div>
-		<div class="col colT2T6 calMonthHead">T3</div>
-		<div class="col colT2T6 calMonthHead">T4</div>
-		<div class="col colT2T6 calMonthHead">T5</div>
-		<div class="col colT2T6 calMonthHead">T6</div>    
-		<div class="col colT7 calMonthHead">T7</div>
+		<div class="col colT2T6 calMonthHead">Hai</div>
+		<div class="col colT2T6 calMonthHead">Ba</div>
+		<div class="col colT2T6 calMonthHead">Tư</div>
+		<div class="col colT2T6 calMonthHead">Năm</div>
+		<div class="col colT2T6 calMonthHead">Sáu</div>    
+		<div class="col colT7 calMonthHead">Bảy</div>
 	</div>
 	<div style="position:relative;width:100%;">
-		<div id="cell0" class="col colCN" ><div class="duong" id="duong0">&nbsp;</div><div class="am" id="am0">&nbsp;</div></div>
-		<div id="cell1" class="col colT2T6"><div class="duong" id="duong1">&nbsp;</div><div class="am" id="am1">&nbsp;</div></div>
-		<div id="cell2" class="col colT2T6"><div class="duong" id="duong2">&nbsp;</div><div class="am" id="am2">&nbsp;</div></div>
-		<div id="cell3" class="col colT2T6"><div class="duong" id="duong3">&nbsp;</div><div class="am" id="am3">&nbsp;</div></div>
-		<div id="cell4" class="col colT2T6"><div class="duong" id="duong4">&nbsp;</div><div class="am" id="am4">&nbsp;</div></div>
-		<div id="cell5" class="col colT2T6"><div class="duong" id="duong5">&nbsp;</div><div class="am" id="am5">&nbsp;</div></div>
-		<div id="cell6" class="col colT7"><div class="duong" id="duong6">&nbsp;</div><div class="am" id="am6">&nbsp;</div></div>
+		<div id="cell0" class="col colCN" onclick="selectDay(0);" ><div class="duong" id="duong0"></div><div class="am" id="am0"></div></div>
+		<div id="cell1" class="col colT2T6" onclick="selectDay(1);"><div class="duong" id="duong1"></div><div class="am" id="am1"></div></div>
+		<div id="cell2" class="col colT2T6" onclick="selectDay(2);"><div class="duong" id="duong2"></div><div class="am" id="am2"></div></div>
+		<div id="cell3" class="col colT2T6" onclick="selectDay(3);"><div class="duong" id="duong3"></div><div class="am" id="am3"></div></div>
+		<div id="cell4" class="col colT2T6" onclick="selectDay(4);"><div class="duong" id="duong4"></div><div class="am" id="am4"></div></div>
+		<div id="cell5" class="col colT2T6" onclick="selectDay(5);"><div class="duong" id="duong5"></div><div class="am" id="am5"></div></div>
+		<div id="cell6" class="col colT7" onclick="selectDay(6);"><div class="duong" id="duong6"></div><div class="am" id="am6"></div></div>		
 	</div>
-
-
 	<div style="position:relative;width:100%;">
-		<form name="NaviForm" method="post">
-		<!--<input name="dd" type="hidden" value="24">-->
-		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2009" title="Năm trước">&lt;&lt;</a> &nbsp;
-		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=9&amp;yy=2010" title="Tháng trước">&lt;</a>	&nbsp;
-
-		<select name="dd">
-			<option value="1">1
-		</option><option value="2">2
-		</option><option value="3">3
-		</option><option value="4">4
-		</option><option value="5">5
-		</option><option value="6">6
-		</option><option value="7">7
-		</option><option value="8">8
-		</option><option value="9">9
-		</option><option value="10">10
-		</option><option value="11">11
-		</option><option value="12">12
-		</option><option value="13">13
-		</option><option value="14">14
-		</option><option value="15">15
-		</option><option value="16">16
-		</option><option value="17">17
-		</option><option value="18">18
-		</option><option value="19">19
-		</option><option value="20">20
-		</option><option value="21">21
-		</option><option value="22">22
-		</option><option value="23">23
-		</option><option value="24" selected="selected">24
-		</option><option value="25">25
-		</option><option value="26">26
-		</option><option value="27">27
-		</option><option value="28">28
-		</option><option value="29">29
-		</option><option value="30">30
-		</option><option value="31">31
-		</option></select>/
-		<select name="mm">
-			<option value="1">1
-		</option><option value="2">2
-		</option><option value="3">3
-		</option><option value="4">4
-		</option><option value="5">5
-		</option><option value="6">6
-		</option><option value="7">7
-		</option><option value="8">8
-		</option><option value="9">9
-		</option><option value="10" selected="selected">10
-		</option><option value="11">11
-		</option><option value="12">12
-		</option></select>
-		/ <input name="yy" size="3" value="2010"> 
-		<input value="OK" type="submit">
-		&nbsp;
-		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=11&amp;yy=2010" title="Tháng sau">&gt;</a> 
-		&nbsp;
-		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2011" title="Năm sau">&gt;&gt;</a>
-		&nbsp;&nbsp;
-		<a href="http://www.informatik.uni-leipzig.de/%7Educ/amlich/PHP/index.php?dd=24&amp;mm=10&amp;yy=2010" title="Ngày hôm nay">@</a> 
-		&nbsp;
-		</form>
-
+		<div id="cell7" class="col colT7" onclick="selectDay(7);"><div class="duong" id="duong7"></div><div class="am" id="am7"></div></div>		
+		<div id="cell8" class="col colT2T6" onclick="selectDay(8);"><div class="duong" id="duong8"></div><div class="am" id="am8"></div></div>
+		<div id="cell9" class="col colT2T6" onclick="selectDay(9);"><div class="duong" id="duong9"></div><div class="am" id="am9"></div></div>
+		<div id="cell10" class="col colT2T6" onclick="selectDay(10);"><div class="duong" id="duong10"></div><div class="am" id="am10"></div></div>
+		<div id="cell11" class="col colT2T6" onclick="selectDay(11);"><div class="duong" id="duong11"></div><div class="am" id="am11"></div></div>
+		<div id="cell12" class="col colT2T6" onclick="selectDay(12);"><div class="duong" id="duong12"></div><div class="am" id="am12"></div></div>
+		<div id="cell13" class="col colT7" onclick="selectDay(13);"><div class="duong" id="duong13"></div><div class="am" id="am13"></div></div>
 	</div>
 
+
+</div>
 </div>
 <script language="JavaScript" type="text/javascript">
 	//alert(document.getElementById("currentDay").innerHTML);
