@@ -348,39 +348,45 @@
 
 }
 
-<!-- hadd -->
-.col {
-   padding: 1em;
-}
-    
+
+
+
+
+
+
+
 .colCN {
    float: left;
    width: 57px;
-}
-    
+   padding: 0;
+   margin: 0;
+   color:red;
+}    
 .colT2T6 {
    float: left;   
    width: 57px;
-}
-
-.colT2T6 .duong {
-	padding-left:5px;text-align:left;font-size:110%;color:black;
+   padding: 0;
+   margin: 0;
+   color:black;
 }
 
 .duongDis {
-	padding-left:5px;text-align:left;font-size:110%;color:gray
+	text-align:left;font-size:130%;color:gray;
 }
-
-.colT2T6 .am, .colT7 .am {text-align:right;font-size:80%;line-height:80%;color:blue}
-
-.colCN .am {text-align:right;font-size:80%;line-height:80%;color:red}
-
-.amDis {text-align:right;font-size:80%;line-height:80%;color:gray}
 
 .colT7 {
-   float: left;   
-   width: 58px;
+   float: right;
+   width: 57px;
+   padding: 0;
+   margin: 0;
+   color: black;
 }
+.am {text-align:right;color:blue}
+
+.duong {text-align:left;font-size:130%;}
+
+.amDis {text-align:right;color:gray}
+
 .calMonthHead {
 	text-align: center;
 	background: #FFFFCC;
@@ -408,68 +414,43 @@ Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 <link rel="stylesheet" type="text/css" href="licham_data/licham.css">
 
 <div width="100%">
-	<table class="thang" width="100%" border="0" cellpadding="1" cellspacing="1">
-	<tbody><tr>
-	<td colspan="2" id="thangduong" class="thangduong">Tháng 10 năm 2010</td>
-	</tr>
-	<tr>
-	<td colspan="2" id="ngayduong" class="ngayduong">24</td>
-	</tr>
-	<tr>
-	<td colspan="2" id="thuduong" class="thuduong">Chủ Nhật</td>
-	</tr>
-
-	<tr>
-	<td> 
-	<div id="thangam" class="thangam">Tháng Chín (T)</div>
-	<div id="ngayam" class="ngayam">17</div>
-	<div id="namam" class="thangam">Năm Canh Dần</div>
-	</td>
-	<td class="canchi">
-	<div id="canchithang" class="gioam">Tháng Bính Tuất</div>
-	<div id="canchingay" class="gioam">Ngày Đinh Mùi</div>
-	<div id="canchigio" class="gioam">Giờ Canh Tý</div>
-	<div id="tietkhi" class="gioam">Tiết Sương giáng</div>
-	</td>
-	</tr>
-
-	<tr>
-	<td colspan="2" id="dayinfo" class="info">&nbsp;</td>
-	</tr>
-
-	<tr>
-	<td colspan="2" id="hoangdao" class="hoangdao">Giờ hoàng đạo: Dần (3-5), Mão (5-7), Tỵ (9-11), Thân (15-17), Tuất (19-21), Hợi (21-23)</td>
-	</tr>
-
-	</tbody></table>
-
-	<div style="position:relative;width:100%;" >
-		<div class="col colCN calMonthHead">CN</div>
-		<div class="col colT2T6 calMonthHead">Hai</div>
-		<div class="col colT2T6 calMonthHead">Ba</div>
-		<div class="col colT2T6 calMonthHead">Tư</div>
-		<div class="col colT2T6 calMonthHead">Năm</div>
-		<div class="col colT2T6 calMonthHead">Sáu</div>    
-		<div class="col colT7 calMonthHead">Bảy</div>
+	<div style="float: left; width:100%; margin: 0 auto;padding: 0;">
+		<div class="colCN calMonthHead">CN</div>
+		<div class="colT2T6 calMonthHead">Hai</div>
+		<div class="colT2T6 calMonthHead">Ba</div>
+		<div class="colT2T6 calMonthHead">Tư</div>
+		<div class="colT2T6 calMonthHead">Năm</div>
+		<div class="colT2T6 calMonthHead">Sáu</div>    
+		<div class="colT7 calMonthHead">Bảy</div>
 	</div>
-	<div style="position:relative;width:100%;">
-		<div id="cell0" class="col colCN" onclick="selectDay(0);" ><div class="duong" id="duong0"></div><div class="am" id="am0"></div></div>
-		<div id="cell1" class="col colT2T6" onclick="selectDay(1);"><div class="duong" id="duong1"></div><div class="am" id="am1"></div></div>
-		<div id="cell2" class="col colT2T6" onclick="selectDay(2);"><div class="duong" id="duong2"></div><div class="am" id="am2"></div></div>
-		<div id="cell3" class="col colT2T6" onclick="selectDay(3);"><div class="duong" id="duong3"></div><div class="am" id="am3"></div></div>
-		<div id="cell4" class="col colT2T6" onclick="selectDay(4);"><div class="duong" id="duong4"></div><div class="am" id="am4"></div></div>
-		<div id="cell5" class="col colT2T6" onclick="selectDay(5);"><div class="duong" id="duong5"></div><div class="am" id="am5"></div></div>
-		<div id="cell6" class="col colT7" onclick="selectDay(6);"><div class="duong" id="duong6"></div><div class="am" id="am6"></div></div>		
+	<div style="float: left; width:100%; margin: 0 auto;padding: 0;">
+		<div id="cell0" class="colCN" onclick="selectDay(0);" ><div class="duong" id="duong0"></div><div class="am" id="am0"></div></div>
+		<div id="cell1" class="colT2T6" onclick="selectDay(1);"><div class="duong" id="duong1"></div><div class="am" id="am1"></div></div>
+		<div id="cell2" class="colT2T6" onclick="selectDay(2);"><div class="duong" id="duong2"></div><div class="am" id="am2"></div></div>
+		<div id="cell3" class="colT2T6" onclick="selectDay(3);"><div class="duong" id="duong3"></div><div class="am" id="am3"></div></div>
+		<div id="cell4" class="colT2T6" onclick="selectDay(4);"><div class="duong" id="duong4"></div><div class="am" id="am4"></div></div>
+		<div id="cell5" class="colT2T6" onclick="selectDay(5);"><div class="duong" id="duong5"></div><div class="am" id="am5"></div></div>
+		<div id="cell6" class="colT7" onclick="selectDay(6);"><div class="duong" id="duong6"></div><div class="am" id="am6"></div></div>		
 	</div>
-	<div style="position:relative;width:100%;">
-		<div id="cell7" class="col colT7" onclick="selectDay(7);"><div class="duong" id="duong7"></div><div class="am" id="am7"></div></div>		
-		<div id="cell8" class="col colT2T6" onclick="selectDay(8);"><div class="duong" id="duong8"></div><div class="am" id="am8"></div></div>
-		<div id="cell9" class="col colT2T6" onclick="selectDay(9);"><div class="duong" id="duong9"></div><div class="am" id="am9"></div></div>
-		<div id="cell10" class="col colT2T6" onclick="selectDay(10);"><div class="duong" id="duong10"></div><div class="am" id="am10"></div></div>
-		<div id="cell11" class="col colT2T6" onclick="selectDay(11);"><div class="duong" id="duong11"></div><div class="am" id="am11"></div></div>
-		<div id="cell12" class="col colT2T6" onclick="selectDay(12);"><div class="duong" id="duong12"></div><div class="am" id="am12"></div></div>
-		<div id="cell13" class="col colT7" onclick="selectDay(13);"><div class="duong" id="duong13"></div><div class="am" id="am13"></div></div>
+	<div style="width:100%; margin: 0 auto;padding: 0;">
+		<div id="cell7" class="colCN" onclick="selectDay(7);"><div class="duong" id="duong7"></div><div class="am" id="am7"></div></div>		
+		<div id="cell8" class="colT2T6" onclick="selectDay(8);"><div class="duong" id="duong8"></div><div class="am" id="am8"></div></div>
+		<div id="cell9" class="colT2T6" onclick="selectDay(9);"><div class="duong" id="duong9"></div><div class="am" id="am9"></div></div>
+		<div id="cell10" class="colT2T6" onclick="selectDay(10);"><div class="duong" id="duong10"></div><div class="am" id="am10"></div></div>
+		<div id="cell11" class="colT2T6" onclick="selectDay(11);"><div class="duong" id="duong11"></div><div class="am" id="am11"></div></div>
+		<div id="cell12" class="colT2T6" onclick="selectDay(12);"><div class="duong" id="duong12"></div><div class="am" id="am12"></div></div>
+		<div id="cell13" class="colT7" onclick="selectDay(13);"><div class="duong" id="duong13"></div><div class="am" id="am13"></div></div>
 	</div>
+	<div style="float: left; width:100%; margin: 0 auto;padding: 0;">
+		<div id="cell14" class="colCN" onclick="selectDay(14);" ><div class="duong" id="duong14"></div><div class="am" id="am14"></div></div>
+		<div id="cell15" class="colT2T6" onclick="selectDay(15);"><div class="duong" id="duong15"></div><div class="am" id="am15"></div></div>
+		<div id="cell16" class="colT2T6" onclick="selectDay(16);"><div class="duong" id="duong16"></div><div class="am" id="am16"></div></div>
+		<div id="cell17" class="colT2T6" onclick="selectDay(17);"><div class="duong" id="duong17"></div><div class="am" id="am17"></div></div>
+		<div id="cell18" class="colT2T6" onclick="selectDay(18);"><div class="duong" id="duong18"></div><div class="am" id="am18"></div></div>
+		<div id="cell19" class="colT2T6" onclick="selectDay(19);"><div class="duong" id="duong19"></div><div class="am" id="am19"></div></div>
+		<div id="cell20" class="colT7" onclick="selectDay(20);"><div class="duong" id="duong20"></div><div class="am" id="am20"></div></div>		
+	</div>
+	
 
 
 </div>
