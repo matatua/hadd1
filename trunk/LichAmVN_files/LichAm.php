@@ -221,7 +221,7 @@ Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 	
 	loadNewMonth(currentDay,currentMonth,currentYear);	
 	
-	ajaxpage('../../module/monthCal.php', 'tableCal');
+	ajaxpage('../module/monthCal.php', 'tableCal');
 </script>
 
 </body></html>
