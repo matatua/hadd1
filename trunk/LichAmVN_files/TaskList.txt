@@ -1,4 +1,7 @@
+past >=29: function
+other: +1
+
 2. Luu giu 2 thong tin: - Ngay thang nam hien tai(thoi gian cua server)
 						- Ngay thang nam nguoi dung dang lua chon(?)
 						- Ngay dj dau tien
-4. Thong tin trong 1 o ngay thang: Ngay duong, ngay dj, thong tin ngay am (Vd: 1/2Ð)
+
