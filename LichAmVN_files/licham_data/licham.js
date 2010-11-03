@@ -242,7 +242,7 @@ function getYearInfo(yyyy) {
 		yearCode = TK21[yyyy - 2000];
 	} else {
 		yearCode = TK22[yyyy - 2100];
-	}
+	}	
 	return decodeLunarYear(yyyy, yearCode);
 }
  
@@ -266,7 +266,7 @@ function findLunarDate(jd, ly) {
 	while (jd < ly[i].jd) {
 		i--;
 	}
-	var off = jd - ly[i].jd;
+	var off = jd - ly[i].jd;	
 	ret = new LunarDate(ly[i].day+off, ly[i].month, ly[i].year, ly[i].leap, jd);
 	return ret;
 }
