@@ -168,10 +168,21 @@ function jdn2day($jd) {
 	$E = INT( ($B-$D)/30.6001 );	
 	return INT($B - $D - INT(30.6001*$E));	
 }
-
-	$dd = 1;//current day
-	$mm = 11;
-	$yy = 2010;
+	$CURRENT_DD = date("d",time());
+	$CURRENT_MM = date("m",time());
+	$CURRENT_YY = date("Y",time());
+	
+	$dd = $_GET["dd"];
+	if($dd == '')
+		$dd = $CURRENT_DD;
+	
+	$mm = $_GET["mm"];
+	if($mm == '')
+		$mm = $CURRENT_MM;
+	
+	$yy = $_GET["yy"];
+	if($yy == '')
+		$yy = $CURRENT_YY;
 	$jd1 = jdn(1,$mm,$yy);		
 	$ly1 = getYearInfo($yy);
 	$tet1 = $ly1[0]->jd;
