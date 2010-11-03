@@ -430,8 +430,10 @@ function loadNewMonth(day, month, year) {
 
 function selectDay(cellId) {
 	if(document.getElementById("duong"+cellId).className == "duongDis"){
-		//loadNewMonth(currentDay,currentMonth,currentYear);
-		loadNewMonth(02,11,2010);
+		var disCell = document.getElementById("duong"+cellId);
+		var dd = disCell.innerHTML;
+		//alert(dd);
+		ajaxpage('../module/monthCal.php?dd=5&mm=12&yy=2010', 'tableCal');
 	} else {
 		selectCell(cellId);
 	}
