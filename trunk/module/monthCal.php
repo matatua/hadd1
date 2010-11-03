@@ -206,8 +206,17 @@ function jdn2day($jd) {
 	
 	$lDates = array();	
 	if ($tet1 <= $jd1) { /* tet(yy) = tet1 < jd1 < jd2 <= 1.1.(yy+1) < tet(yy+1) */
-		for ($i = $jd1; $i < $jd2; $i++) {
-			array_push($lDates, findLunarDate($i, $ly1));
+		$i = $jd1;
+		$lunarDate = findLunarDate($i, $ly1);
+		array_push($lDates, $lunarDate);
+		for ($i = $jd1+1; $i < $jd2; $i++) {
+			if($lunarDate->day >= 29){
+				$lunarDate = findLunarDate($i, $ly1);								
+			} else {
+				$tmp = new LunarDate($lunarDate->day+1,$lunarDate->month,$lunarDate->year,$lunarDate->leap,$lunarDate->jd,$lunarDate->monthLength);				
+				$lunarDate = $tmp;
+			}
+			array_push($lDates, $lunarDate);
 		}
 	} else if ($jd1 < $tet1 && $jd2 < $tet1) { /* tet(yy-1) < jd1 < jd2 < tet1 = tet(yy) */
 		$ly1 = getYearInfo($yy - 1);
