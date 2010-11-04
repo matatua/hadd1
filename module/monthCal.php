@@ -253,16 +253,18 @@ function jdn2day($jd) {
 			$disableClass = 'Dis';
 			$lDay = '';
 			$style1 = '';
+			$function = '';
 			if ($index < $startId){
 				$duong = $duong1;
-				$duong1++;				
+				$duong1++;
+				$function = "goToPreviousMonth(".$duong.",".$mm.",".$yy.");";
 			} else if($duong2<$dMonthLenght){
 				$lunarIndex = $duong2;
 				$ld = $lDates[$lunarIndex];
 				$lDay = $ld->day;
 				if($lDay == '1'){
 					//$nhuan = ($leap == 1) ? ' nhu\u1EADn' : '';
-					$lDay .= "/".$ld->month.($ld->monthLenght == 30 ? ' Đ' : ' T');
+					$lDay .= "/".$ld->month.($ld->monthLenght == 30 ? 'Đ' : 'T');
 				}
 				$duong2++;
 				$duong = $duong2;
@@ -270,11 +272,13 @@ function jdn2day($jd) {
 				if($duong2==$dd){
 					$style1 = "style='background: #FFF000;'";
 				}
+				$function = "selectDay(".$index.");";
 			} else {
 				$duong3++;
-				$duong = $duong3;				
+				$duong = $duong3;
+				$function = "goToNextMonth(".$duong.",".$mm.",".$yy.");";
 			}
-			$calTable .= "<div id='cell".$index."' class='".$colClass."' onclick='selectDay(".$index.");' ".$style1."><div class='duong".$disableClass."' id='duong".$index."'>".$duong."</div><div class='am' id='am".$index."'>".$lDay."</div></div>";
+			$calTable .= "<div id='cell".$index."' class='".$colClass."' onclick='".$function."' ".$style1."><div class='duong".$disableClass."' id='duong".$index."'>".$duong."</div><div class='am' id='am".$index."'>".$lDay."</div></div>";
 		}
 		$calTable .= "</div>";
 	}

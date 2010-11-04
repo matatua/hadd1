@@ -141,7 +141,7 @@ function getSolarTerm(dayNumber, timeZone) {
 }
 
 /*
- * @Hadd
+ *
  * Load new Month
  */
  
@@ -284,15 +284,7 @@ function getLunarDate(dd, mm, yyyy) {
 	return findLunarDate(jd, ly);
 }
 
- 
- function selectCell(cellId) {
-	for (var i=0; i<41; i++) {
-	// ToDo: Change this to default background color
-		document.getElementById("cell"+i).style.backgroundColor = 'white';
-	}
-	document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
-}
- 
+   
  function jdn(dd, mm, yy) {
 	var a = INT((14 - mm) / 12);
 	var y = yy+4800-a;
@@ -316,127 +308,40 @@ function jdn2day(jd) {
 	return INT(B - D - INT(30.6001*E));	
 }
 
-function putInCell(id,duong,am,dis) {
-	document.getElementById("duong"+id).innerHTML=duong;
-	document.getElementById("am"+id).innerHTML=am;
-	if(dis==1) {
-		document.getElementById("duong"+id).className = "duongDis";
-		document.getElementById("am"+id).className = "amDis";
-	}
-} 
-
-
-function loadTable(dd, mm, yy) {
-	var jd1 = jdn(1,mm,yy);
-	var mm1,jd2,yy1;
-	var ly1 = getYearInfo(yy);
-	var tet1 = ly1[0].jd;
-	
-	if (mm < 12) {
-		mm1 = mm + 1;
-		yy1 = yy;
-	} else {
-		mm1 = 1;
-		yy1 = yy + 1;
-	}
-	jd2 = jdn(1, mm1, yy1);
-	var dMonthLenght = jd2 - jd1;
-	var startId = (jd1+1)%7;
-	//putInCell(startId,1,2);
-	var k = 0,duong1=0,duong2=0,duong3=0;
-	duong1 = jdn2day(jd1 - startId);
-	
-	var lDates = new Array();
-	if (tet1 <= jd1) { /* tet(yy) = tet1 < jd1 < jd2 <= 1.1.(yy+1) < tet(yy+1) */
-		for (i = jd1; i < jd2; i++) {
-			lDates.push(findLunarDate(i, ly1));
-		}
-	} else if (jd1 < tet1 && jd2 < tet1) { /* tet(yy-1) < jd1 < jd2 < tet1 = tet(yy) */
-		ly1 = getYearInfo(yy - 1);
-		for (i = jd1; i < jd2; i++) {
-			lDates.push(findLunarDate(i, ly1));
-		}
-	} else if (jd1 < tet1 && tet1 <= jd2) { /* tet(yy-1) < jd1 < tet1 <= jd2 < tet(yy+1) */
-		ly2 = getYearInfo(yy - 1);
-		for (i = jd1; i < tet1; i++) {
-			lDates.push(findLunarDate(i, ly2));
-		}
-		for (i = tet1; i < jd2; i++) {
-			lDates.push(findLunarDate(i, ly1));
-		}
-	}
-	//alert(lDates.lenght);
-	//alert(lDates[0]);
-	for (i = 0; i < 6; i++) {		
-		for (j = 0; j < 7; j++) {
-			k = 7 * i + j;
-			if (k < startId){
-				putInCell(k,duong1,'',1);
-				duong1++;
-			} else if(duong2<dMonthLenght){
-				var lunarIndex = duong2;
-				var lunarDate = lDates[lunarIndex];
-				var lDay = lunarDate.day;
-				if(lDay == '1'){
-				//var nhuan = (leap == 1) ? ' nhu\u1EADn' : '';
-					lDay += "/" + lunarDate.month + (length == 30 ? ' (\u0110)' : ' (T)');
-				}
-				duong2++;
-				putInCell(k,duong2,lDay,0);
-				if(duong2==dd){
-					selectDay(k);
-				}
-			} else {
-				duong3++;
-				putInCell(k,duong3,'',1);
-			}
-		}		
-	}
-	
-
-	/*
-	var i, j, k, solar, lunar, cellClass, solarClass, lunarClass;
-	var currentMonth = getMonth(mm, yy);
-	if (currentMonth.length == 0) return;
-	var ld1 = currentMonth[0];
-	var emptyCells = (ld1.jd + 1) % 7;
-	var MonthHead = mm + "/" + yy;
-	var LunarHead = getYearCanChi(ld1.year);
-	var res = "";
-	res += ('<table class="thang" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
-	res += printHead(mm, yy);
-	for (i = 0; i < 6; i++) {
-		res += ("<tr>\n");
-		for (j = 0; j < 7; j++) {
-			k = 7 * i + j;
-			if (k < emptyCells || k >= emptyCells + currentMonth.length) {
-				res += printEmptyCell();
-			} else {
-				solar = k - emptyCells + 1;
-				ld1 = currentMonth[k - emptyCells];
-				res += printCell(ld1, solar, mm, yy);
-			}
-		}
-		res += ("</tr>\n");
-	}
-	res += ('</table>\n');
-	return res;
-	*/
+// HADD
+var TABLE_ID = 'tableCal';
+function goTo(dd, mm, yy){
+	ajaxpage('../module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, TABLE_ID);
 }
-function loadNewMonth(day, month, year) {
-	loadTable(day,month, year);
-	
+function goToPreviousMonth(dd, mm, yy) {
+	var month = (mm + 11)%12;
+	var year = yy; 
+	if(month == 0) {
+		month = 12;	
+		year = yy - 1;
+	}
+	goTo(dd,month,year);
+}
+function goToNextMonth(dd, mm, yy) {
+	var month = (mm + 1)%12;
+	var year = yy; 
+	if(month == 0)
+		month = 12;
+	else if(month == 1)
+		year = yy + 1;
+	goTo(dd,month,year);
+}
+function selectCell(cellId) {
+	for (var i=0; i<41; i++) {
+	// ToDo: Change this to default background color
+		document.getElementById("cell"+i).style.backgroundColor = 'white';
+	}
+	document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
 }
 
-function selectDay(cellId) {
-	if(document.getElementById("duong"+cellId).className == "duongDis"){
-		var disCell = document.getElementById("duong"+cellId);
-		var dd = disCell.innerHTML;
-		//alert(dd);
-		ajaxpage('../module/monthCal.php?dd=5&mm=12&yy=2010', 'tableCal');
-	} else {
-		selectCell(cellId);
-	}
+function selectDay(cellId) {	
+	selectCell(cellId);
+	
 	/*
 	//alert('Cell '+cellId+': '+dd+'/'+mm+'/'+yy+" AL = "+sday+"/"+smonth+"/"+syear);
 	document.NaviForm.dd.value = sday;
