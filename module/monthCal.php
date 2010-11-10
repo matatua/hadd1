@@ -1,4 +1,30 @@
 ﻿<div width="100%">
+	<div class='calTableRow'>
+		<select id="cThang" onChange="javascript:selectMonth();">
+		<?php
+			$CURRENT_DD = date("d",time());
+			$CURRENT_MM = date("m",time());
+			$CURRENT_YY = date("Y",time());
+			$dd = $_GET["dd"];
+			if($dd == '')
+				$dd = $CURRENT_DD;
+			
+			$mm = $_GET["mm"];
+			if($mm == '')
+				$mm = $CURRENT_MM;
+			
+			$yy = $_GET["yy"];
+			if($yy == '')
+				$yy = $CURRENT_YY;			
+			for($i=1; $i<13;$i++){
+				$s = "SELECTED";
+				if($i!=$mm)
+					$s = "";
+				echo "<option value=\"".$i."\" ".$s." >".getThang($i)."</option>";
+			}
+		?>			
+		</select>
+	</div>
 	<div style="float: left; width:100%; margin: 0 auto;padding: 0;">
 		<div class="colCN calMonthHead">CN</div>
 		<div class="colT2T6 calMonthHead">Hai</div>
@@ -17,10 +43,10 @@ function getThu($i){
 	return $thu[$i];
 }
 
-function getThang($i){
+function getThang($i){	
 	$thang = array('Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu',
 				   'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai');
-	return $thang[$i];
+	return $thang[$i-1];
 }
 
 
@@ -186,25 +212,11 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$jdn = jdn($dd,$mm,$yy);	
 	$ngayDuongAm = getThu(($jdn+1)%7);
 	$ngayDuongAm .= ", Ngày ".$dd;	
-	$ngayDuongAm .= " ".getThang($mm-1);
+	$ngayDuongAm .= " ".getThang($mm);
 	$ngayDuongAm .= ", ".$yy;
 	return $ngayDuongAm;
 }	
-
-	$CURRENT_DD = date("d",time());
-	$CURRENT_MM = date("m",time());
-	$CURRENT_YY = date("Y",time());
-	$dd = $_GET["dd"];
-	if($dd == '')
-		$dd = $CURRENT_DD;
 	
-	$mm = $_GET["mm"];
-	if($mm == '')
-		$mm = $CURRENT_MM;
-	
-	$yy = $_GET["yy"];
-	if($yy == '')
-		$yy = $CURRENT_YY;
 	$jd1 = jdn(1,$mm,$yy);		
 	$ly1 = getYearInfo($yy);
 	$tet1 = $ly1[0]->jd;
@@ -261,8 +273,7 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$row = 0;
 	$col = 0;
 	$duong = 0;
-	$startCalTableRow = "<div class='calTableRow'>";
-	$calTable.=$startCalTableRow."</div>";
+	$startCalTableRow = "<div class='calTableRow'>";	
 	for($row = 0; $row < 6; $row++){
 		$calTable .= $startCalTableRow;
 		for($col = 0; $col < 7; $col ++){

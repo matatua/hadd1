@@ -144,7 +144,7 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 	<div id="tableCal"></div>
 </div>
 <script language="JavaScript" type="text/javascript">		
-	ajaxpage('../module/monthCal.php', 'tableCal');
+	ajaxpage('module/monthCal.php', 'tableCal');
 </script>
 
 </body></html>
