@@ -9,6 +9,20 @@
 		<div class="colT7 calMonthHead">Bảy</div>
 	</div>
 <?php 	
+function getThu($i){
+	$thu = array(
+	   'Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư',
+	   'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'
+	);	
+	return $thu[$i];
+}
+
+function getThang($i){
+	$thang = array('Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu',
+				   'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai');
+	return $thang[$i];
+}
+
 
 class LunarDate {
 public function __construct($dd, $mm, $yy, $leap, $jd, $mLenght) {
@@ -168,10 +182,18 @@ function jdn2day($jd) {
 	$E = INT( ($B-$D)/30.6001 );	
 	return INT($B - $D - INT(30.6001*$E));	
 }
+function layNgayDuongNgayAm($dd,$mm,$yy) {
+	$jdn = jdn($dd,$mm,$yy);	
+	$ngayDuongAm = getThu(($jdn+1)%7);
+	$ngayDuongAm .= ", Ngày ".$dd;	
+	$ngayDuongAm .= " ".getThang($mm-1);
+	$ngayDuongAm .= ", ".$yy;
+	return $ngayDuongAm;
+}	
+
 	$CURRENT_DD = date("d",time());
 	$CURRENT_MM = date("m",time());
 	$CURRENT_YY = date("Y",time());
-	
 	$dd = $_GET["dd"];
 	if($dd == '')
 		$dd = $CURRENT_DD;
@@ -238,9 +260,11 @@ function jdn2day($jd) {
 	$calTable = "";
 	$row = 0;
 	$col = 0;
-	$duong = 0;	
+	$duong = 0;
+	$startCalTableRow = "<div class='calTableRow'>";
+	$calTable.=$startCalTableRow."</div>";
 	for($row = 0; $row < 6; $row++){
-		$calTable .= "<div class='calTableRow'>";
+		$calTable .= $startCalTableRow;
 		for($col = 0; $col < 7; $col ++){
 			if($col == 0) {
 				$colClass = "colCN";
@@ -282,6 +306,7 @@ function jdn2day($jd) {
 		}
 		$calTable .= "</div>";
 	}
+	$calTable.=$startCalTableRow."<a href='javascript:goTo(".$CURRENT_DD.",".$CURRENT_MM.",".$CURRENT_YY.");'>Hôm nay: </a>".layNgayDuongNgayAm($CURRENT_DD,$CURRENT_MM,$CURRENT_YY)."</div>";
 	echo $calTable;	
 
 ?>
