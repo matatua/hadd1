@@ -1,5 +1,10 @@
 ﻿<html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name='description' content='LichAm.vn - Vietnamese Lunar Calendar - Lịch Âm Việt Nam'>
+<meta name='keywords' content='lich am, xem lich, am lich, licham, lịch âm, âm lịch, lich duong, van nien, Lunar Calendar'>
+<meta name='revisit-after' content='1 days'>
+<meta name='robots' content='index, follow' />
+
 <meta name="Author" content="Do Duy Ha">
 <title>Lịch Âm Việt Nam</title>
 <style type="text/css" charset="utf-8">
@@ -131,10 +136,6 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 
 </script>
 
-Ngày <div id="currentDay"><?php echo date("d",time()) ?></div>
-Tháng <div id="currentMonth"><?php echo date("m",time()) ?></div>
-Năm <div id="currentYear"><?php echo date("Y",time())?></div>
-
 <div style="width:400px; margin-left: auto; margin-right: auto ;">
 
 <script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
@@ -142,12 +143,7 @@ Năm <div id="currentYear"><?php echo date("Y",time())?></div>
 <link rel="stylesheet" type="text/css" href="licham_data/licham.css">
 	<div id="tableCal"></div>
 </div>
-<script language="JavaScript" type="text/javascript">	
-	var currentDay = INT(document.getElementById("currentDay").innerHTML);
-	var currentMonth = INT(document.getElementById("currentMonth").innerHTML);
-	var currentYear = INT(document.getElementById("currentYear").innerHTML);
-		
-	
+<script language="JavaScript" type="text/javascript">		
 	ajaxpage('../module/monthCal.php', 'tableCal');
 </script>
 
