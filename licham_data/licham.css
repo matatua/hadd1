@@ -26,5 +26,8 @@
   .normal {vertical-align:top; line-height:100%}
   .hoangdao {font-size:80%}
   .info{text-align:center;font-size:100%;color:#FF33CC}
+  .tableCalStyle_{
+	border-style:solid;border-color:red;border-width:2px;height:400px;
+  }
 -->
 </style>
