@@ -136,7 +136,7 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 
 </script>
 
-<div style="width:400px; margin-left: auto; margin-right: auto ;">
+<div style="width:404px; margin-left: auto; margin-right: auto ;">
 
 <script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
 
@@ -145,6 +145,7 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 </div>
 <script language="JavaScript" type="text/javascript">		
 	ajaxpage('module/monthCal.php', 'tableCal');
+	document.getElementById("tableCal").className = "tableCalStyle";
 </script>
 
 </body></html>

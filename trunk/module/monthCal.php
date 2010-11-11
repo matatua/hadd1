@@ -317,8 +317,9 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 		}
 		$calTable .= "</div>";
 	}
-	$calTable.=$startCalTableRow."<a href='javascript:goTo(".$CURRENT_DD.",".$CURRENT_MM.",".$CURRENT_YY.");'>Hôm nay: </a>".layNgayDuongNgayAm($CURRENT_DD,$CURRENT_MM,$CURRENT_YY)."</div>";
+	$calTable.=$startCalTableRow."<a title=\"Xem ngày hôm nay\" style=\"font-weight: bold;\" href='javascript:goTo(".$CURRENT_DD.",".$CURRENT_MM.",".$CURRENT_YY.");'>Hôm nay: </a></br>".layNgayDuongNgayAm($CURRENT_DD,$CURRENT_MM,$CURRENT_YY)."</div>";
 	echo $calTable;	
-
+	
+	echo "<script language=\"JavaScript\" src=\"licham_data/applyStyle.js\" type=\"text/javascript\"></script>"
 ?>
 </div>
