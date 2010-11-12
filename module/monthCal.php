@@ -1,4 +1,4 @@
-﻿<div width="100%">
+﻿<div width="50%">
 	<div class='calTableRow'>
 		<select id="cThang" onChange="javascript:selectMonth();">
 		<?php
@@ -25,7 +25,7 @@
 		?>			
 		</select>
 	</div>
-	<div style="float: left; width:100%; margin: 0 auto;padding: 0;">
+	<div class="calTableHeadRow" >
 		<div class="colCN calMonthHead">CN</div>
 		<div class="colT2T6 calMonthHead">Hai</div>
 		<div class="colT2T6 calMonthHead">Ba</div>
@@ -320,6 +320,9 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$calTable.=$startCalTableRow."<a title=\"Xem ngày hôm nay\" style=\"font-weight: bold;\" href='javascript:goTo(".$CURRENT_DD.",".$CURRENT_MM.",".$CURRENT_YY.");'>Hôm nay: </a></br>".layNgayDuongNgayAm($CURRENT_DD,$CURRENT_MM,$CURRENT_YY)."</div>";
 	echo $calTable;	
 	
-	echo "<script language=\"JavaScript\" src=\"licham_data/applyStyle.js\" type=\"text/javascript\"></script>"
 ?>
+</div>
+<div width="50%" style="text-align:center;" >
+<div width="350px" ><?php echo getThang($CURRENT_MM); ?></div>
+<div style="width:30px;writing-mode: tb-rl;filter: flipv fliph;" ><?php echo $CURRENT_YY; ?></div>
 </div>

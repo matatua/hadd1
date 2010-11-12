@@ -29,5 +29,8 @@
   .tableCalStyle_{
 	border-style:solid;border-color:red;border-width:2px;height:400px;
   }
+  .tableCalStyle{
+	width: 404px; margin-left: auto; margin-right: auto;
+}
 -->
 </style>
