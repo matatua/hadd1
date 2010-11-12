@@ -47,14 +47,21 @@
 .amDis {text-align:right;color:gray}
 
 .calMonthHead {
-	text-align: center;
-	background: #FFFFCC;
-	font-weight: bold;
+	
 }
 .calTableRow {
-	float: left; width:100%; margin: 0 auto;padding: 0;
+	float: left; width:50%; margin: 0 auto;padding: 0;
+	height: 40px;
+	border-right: 1px solid #E6E6D0;
+	border-left: 1px solid #E6E6D0;
+	border-bottom: 1px solid #E6E6D0;
 }
-
+.calTableHeadRow{
+	float: left; width:50%; margin: 0 auto;padding: 0;border: 1px solid #E6E6D0;
+	text-align: center;
+	background: #FFFFCC;
+	font-weight: bold;	
+}
 </style></head><body>
 
 <!--
@@ -136,7 +143,7 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 
 </script>
 
-<div style="width:404px; margin-left: auto; margin-right: auto ;">
+<div style="width:808px">
 
 <script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
 
@@ -144,8 +151,7 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 	<div id="tableCal"></div>
 </div>
 <script language="JavaScript" type="text/javascript">		
-	ajaxpage('module/monthCal.php', 'tableCal');
-	document.getElementById("tableCal").className = "tableCalStyle";
+	ajaxpage('module/monthCal.php', 'tableCal');	
 </script>
 
 </body></html>
