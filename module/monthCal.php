@@ -1,4 +1,4 @@
-﻿<div width="50%">
+﻿<div style="float:left; width:50%;">
 	<div class='calTableRow'>
 		<select id="cThang" onChange="javascript:selectMonth();">
 		<?php
@@ -273,6 +273,7 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$row = 0;
 	$col = 0;
 	$duong = 0;
+	$thuLC = getThu((jdn($dd,$mm,$yy)+1)%7);
 	$startCalTableRow = "<div class='calTableRow'>";	
 	for($row = 0; $row < 6; $row++){
 		$calTable .= $startCalTableRow;
@@ -322,7 +323,23 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	
 ?>
 </div>
-<div width="50%" style="text-align:center;" >
-<div width="350px" ><?php echo getThang($CURRENT_MM); ?></div>
-<div style="width:30px;writing-mode: tb-rl;filter: flipv fliph;" ><?php echo $CURRENT_YY; ?></div>
+<div style="float:right; width:50%;" >
+<div style="float:left;width:380px;text-align:center;" >
+	<div style="height:50px;"><?php echo getThang($mm); ?></div>
+	<div style="height:100px;font-size:50pt;font-weight:bold;"><?php echo $dd; ?></div>
+	<div style="height:20px;"><?php echo $thuLC; ?></div>	
+</div>
+<div style="float:right;width: auto;height: auto;" >
+<?php
+	for($i=0;$i<strlen($yy);$i++) {
+		echo $yy{$i}."</br>";
+	}
+?>
+</div>
+<div style="float:left;width:100%;" >
+	<div style="float:left;width:40%;text-align:left;" >
+	</div>
+	<div style="float:left;width:40%;text-align:right;" >
+	</div>
+</div>
 </div>
