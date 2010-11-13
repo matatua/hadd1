@@ -50,14 +50,14 @@
 	
 }
 .calTableRow {
-	float: left; width:50%; margin: 0 auto;padding: 0;
+	float: left; width:100%; margin: 0 auto;padding: 0;
 	height: 40px;
-	border-right: 1px solid #E6E6D0;
-	border-left: 1px solid #E6E6D0;
-	border-bottom: 1px solid #E6E6D0;
+	border-right: 1px solid #C2C2C2;
+	border-left: 1px solid #C2C2C2;
+	border-bottom: 1px solid #C2C2C2;
 }
 .calTableHeadRow{
-	float: left; width:50%; margin: 0 auto;padding: 0;border: 1px solid #E6E6D0;
+	float: left; width:100%; margin: 0 auto;padding: 0;border: 1px solid #E6E6D0;
 	text-align: center;
 	background: #FFFFCC;
 	font-weight: bold;	
@@ -142,6 +142,7 @@ loadedobjects+=file+" " //Remember this object as being already added to page
 }
 
 </script>
+Lịch Âm Việt Nam
 
 <div style="width:808px">
 
