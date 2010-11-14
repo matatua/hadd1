@@ -48,7 +48,10 @@ function getThang($i){
 				   'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai');
 	return $thang[$i-1];
 }
-
+function getCan($i){
+	$CAN = array('Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu' , 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý');
+	return $CAN[$i];
+}
 
 class LunarDate {
 public function __construct($dd, $mm, $yy, $leap, $jd, $mLenght) {
@@ -273,7 +276,9 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$row = 0;
 	$col = 0;
 	$duong = 0;
-	$thuLC = getThu((jdn($dd,$mm,$yy)+1)%7);
+	$jdnLC = jdn($dd,$mm,$yy);
+	$thuLC = getThu(($jdnLC+1)%7);
+	$lDateLC = findLunarDate($jdnLC,$ly1);
 	$startCalTableRow = "<div class='calTableRow'>";	
 	for($row = 0; $row < 6; $row++){
 		$calTable .= $startCalTableRow;
@@ -336,10 +341,12 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	}
 ?>
 </div>
-<div style="float:left;width:100%;" >
-	<div style="float:left;width:40%;text-align:left;" >
+<div style="float:left;width:100%;padding-left:30px;" >
+	<div style="float:left;width:60%;text-align:left;" >
+		<?php echo $lDateLC->month; ?>
 	</div>
 	<div style="float:left;width:40%;text-align:right;" >
+		<?php echo getCan(($yy*12 + $mm + 3) % 10 -1)." ";?>
 	</div>
 </div>
 </div>
