@@ -5,6 +5,7 @@
 			$CURRENT_DD = date("d",time());
 			$CURRENT_MM = date("m",time());
 			$CURRENT_YY = date("Y",time());
+			$CURRENT_HH = date("H",time());
 			$dd = $_GET["dd"];
 			if($dd == '')
 				$dd = $CURRENT_DD;
@@ -48,11 +49,19 @@ function getThang($i){
 				   'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai');
 	return $thang[$i-1];
 }
+function getThangAm($i){
+	$THANG_AM = array('Tháng Giêng', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu',
+				   'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Chạp');
+	return $THANG_AM[$i-1];
+}
 function getCan($i){
 	$CAN = array('Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu' , 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý');
 	return $CAN[$i];
 }
-
+function getChi($i) {
+	$CHI = array('Tí', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tị', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi');
+	return $CHI[$i];
+}
 class LunarDate {
 public function __construct($dd, $mm, $yy, $leap, $jd, $mLenght) {
 	$this->day = $dd;
@@ -343,10 +352,31 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 </div>
 <div style="float:left;width:100%;padding-left:30px;" >
 	<div style="float:left;width:60%;text-align:left;" >
-		<?php echo $lDateLC->month; ?>
+		<?php echo getThangAm($lDateLC->month).($lDateLC->monthLenght == 30 ? '(Đủ)' : '(Thiếu)'); ?>
 	</div>
-	<div style="float:left;width:40%;text-align:right;" >
-		<?php echo getCan(($yy*12 + $mm + 3) % 10 -1)." ";?>
+	<div style="float:right;width:40%;text-align:right;" >
+		Năm <?php echo getCan(($lDateLC->year+6)%10)." ".getChi(($lDateLC->year+8)%12);?>
 	</div>
 </div>
+<div style="float:left;width:40%;text-align:left;padding-left:30px;" >
+	<div style="width:60%;font-size:25pt;text-align:center;">
+		<?php echo $lDateLC->day; ?>
+	</div>
+	<div style="width:100%;" >
+		<?php echo "Giờ ".$CURRENT_HH; ?>
+	</div>
+	<div style="width:100%;" >
+		Ngày <?php echo getCan(($lDateLC->jd + 9) % 10)." ".getChi(($lDateLC->jd+1)%12); ?>
+	</div>
+</div>
+<div style="float:left;width:100%;text-align:left;padding-left:30px;" >
+	<div style="float:left;width:40%;text-align:left;" >
+		Tháng <?php echo getCan(($lDateLC->year*12 + $lDateLC->month + 3) % 10)." ".getChi(($lDateLC->month+1)%12);?>
+	</div>
+	<div style="float:right;width:40%;text-align:right;" >
+		
+	</div>
+</div>
+</div>
+	
 </div>
