@@ -1,31 +1,4 @@
-﻿<div style="float:left; width:50%;">
-	<div class='calTableRow'>
-		<select id="cThang" onChange="javascript:selectMonth();">
-		<?php
-			$CURRENT_DD = date("d",time());
-			$CURRENT_MM = date("m",time());
-			$CURRENT_YY = date("Y",time());
-			$CURRENT_HH = date("H",time());
-			$dd = $_GET["dd"];
-			if($dd == '')
-				$dd = $CURRENT_DD;
-			
-			$mm = $_GET["mm"];
-			if($mm == '')
-				$mm = $CURRENT_MM;
-			
-			$yy = $_GET["yy"];
-			if($yy == '')
-				$yy = $CURRENT_YY;			
-			for($i=1; $i<13;$i++){
-				$s = "SELECTED";
-				if($i!=$mm)
-					$s = "";
-				echo "<option value=\"".$i."\" ".$s." >".getThang($i)."</option>";
-			}
-		?>			
-		</select>
-	</div>
+﻿<div style="float:left; width:50%;">	
 	<div class="calTableHeadRow" >
 		<div class="colCN calMonthHead">CN</div>
 		<div class="colT2T6 calMonthHead">Hai</div>
@@ -36,6 +9,22 @@
 		<div class="colT7 calMonthHead">Bảy</div>
 	</div>
 <?php 	
+	$CURRENT_DD = date("d",time());
+	$CURRENT_MM = date("m",time());
+	$CURRENT_YY = date("Y",time());
+	$CURRENT_HH = date("H",time());
+	$dd = $_GET["dd"];
+	if($dd == '')
+		$dd = $CURRENT_DD;
+	
+	$mm = $_GET["mm"];
+	if($mm == '')
+		$mm = $CURRENT_MM;
+	
+	$yy = $_GET["yy"];
+	if($yy == '')
+		$yy = $CURRENT_YY;	
+
 function getThu($i){
 	$thu = array(
 	   'Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư',
@@ -332,6 +321,14 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 		}
 		$calTable .= "</div>";
 	}
+	$calTable.=$startCalTableRow."<button type=\"button\" onClick=\"javascript:goToPreviousMonth(1,".$mm.",".$yy.")\">Tháng trước</button><select id=\"cThang\" onChange=\"javascript:selectMonth();\">";
+	for($i=1; $i<13;$i++){
+		$s = "SELECTED";
+		if($i!=$mm)
+			$s = "";
+		$calTable.= "<option value=\"".$i."\" ".$s." >".getThang($i)."</option>";
+	}		
+	$calTable.="</select><input name=\"yearLC\" id=\"yearLCID\" type=\"text\" value=\"".$CURRENT_YY."\" maxlength=\"4\" style=\"width:90px;\"/><button type=\"button\" onClick=\"javascript:goToNextMonth(1,".$mm.",".$yy.")\" style=\"float:right;\">Tháng sau</button></div>";
 	$calTable.=$startCalTableRow."<a title=\"Xem ngày hôm nay\" style=\"font-weight: bold;\" href='javascript:goTo(".$CURRENT_DD.",".$CURRENT_MM.",".$CURRENT_YY.");'>Hôm nay: </a></br>".layNgayDuongNgayAm($CURRENT_DD,$CURRENT_MM,$CURRENT_YY)."</div>";
 	echo $calTable;	
 	
