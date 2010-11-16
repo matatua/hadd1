@@ -302,7 +302,7 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 				if($duong2==$dd){
 					$style1 = "style='background: #FFF000;'";
 				}
-				$function = "selectDay(".$index.",".$duong.",".$ld->jd.",".$ld->day.",".$ld->month.",".$ld->year.");";
+				$function = "selectDay(".$index.",".$duong.",".$ld->jd.",".$ld->day.",".$ld->month.",".$ld->year.",".$ld->leap.",".$ld->monthLenght.");";
 			} else {
 				$duong3++;
 				$duong = $duong3;
