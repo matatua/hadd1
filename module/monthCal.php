@@ -241,17 +241,8 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	
 	$lDates = array();	
 	if ($tet1 <= $jd1) { /* tet(yy) = tet1 < jd1 < jd2 <= 1.1.(yy+1) < tet(yy+1) */
-		$i = $jd1;
-		$lunarDate = findLunarDate($i, $ly1);
-		array_push($lDates, $lunarDate);
-		for ($i = $jd1+1; $i < $jd2; $i++) {
-			if($lunarDate->day >= 29){
-				$lunarDate = findLunarDate($i, $ly1);								
-			} else {
-				$tmp = new LunarDate($lunarDate->day+1,$lunarDate->month,$lunarDate->year,$lunarDate->leap,$lunarDate->jd,$lunarDate->monthLength);				
-				$lunarDate = $tmp;
-			}
-			array_push($lDates, $lunarDate);
+		for ($i = $jd1; $i < $jd2; $i++) {				
+			array_push($lDates, findLunarDate($i, $ly1));
 		}
 	} else if ($jd1 < $tet1 && $jd2 < $tet1) { /* tet(yy-1) < jd1 < jd2 < tet1 = tet(yy) */
 		$ly1 = getYearInfo($yy - 1);
@@ -311,7 +302,7 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 				if($duong2==$dd){
 					$style1 = "style='background: #FFF000;'";
 				}
-				$function = "selectDay(".$index.");";
+				$function = "selectDay(".$index.",".$duong.",".$ld->jd.",".$ld->day.",".$ld->month.",".$ld->year.");";
 			} else {
 				$duong3++;
 				$duong = $duong3;
@@ -336,9 +327,9 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 </div>
 <div style="float:right; width:50%;" >
 <div style="float:left;width:380px;text-align:center;" >
-	<div style="height:50px;"><?php echo getThang($mm); ?></div>
-	<div style="height:100px;font-size:50pt;font-weight:bold;"><?php echo $dd; ?></div>
-	<div style="height:20px;"><?php echo $thuLC; ?></div>	
+	<div id="thangDuongId" style="height:50px;" ><?php echo getThang($mm); ?></div>
+	<div id="ngayDuongId" style="height:100px;font-size:50pt;font-weight:bold;"><?php echo $dd; ?></div>
+	<div id="thuId" style="height:20px;"><?php echo $thuLC; ?></div>	
 </div>
 <div style="float:right;width: auto;height: auto;" >
 <?php
@@ -348,26 +339,26 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 ?>
 </div>
 <div style="float:left;width:100%;padding-left:30px;" >
-	<div style="float:left;width:60%;text-align:left;" >
+	<div id="thangam" style="float:left;width:60%;text-align:left;" >
 		<?php echo getThangAm($lDateLC->month).($lDateLC->monthLenght == 30 ? '(Đủ)' : '(Thiếu)'); ?>
 	</div>
-	<div style="float:right;width:40%;text-align:right;" >
+	<div id="namam" style="float:right;width:40%;text-align:right;" >
 		Năm <?php echo getCan(($lDateLC->year+6)%10)." ".getChi(($lDateLC->year+8)%12);?>
 	</div>
 </div>
 <div style="float:left;width:40%;text-align:left;padding-left:30px;" >
-	<div style="width:60%;font-size:25pt;text-align:center;">
+	<div id="ngayamId" style="width:60%;font-size:25pt;text-align:center;">
 		<?php echo $lDateLC->day; ?>
 	</div>
 	<div style="width:100%;" >
 		<?php echo "Giờ ".$CURRENT_HH; ?>
 	</div>
-	<div style="width:100%;" >
+	<div id="canchingay" style="width:100%;" >
 		Ngày <?php echo getCan(($lDateLC->jd + 9) % 10)." ".getChi(($lDateLC->jd+1)%12); ?>
 	</div>
 </div>
 <div style="float:left;width:100%;text-align:left;padding-left:30px;" >
-	<div style="float:left;width:40%;text-align:left;" >
+	<div id="canchithang" style="float:left;width:40%;text-align:left;" >
 		Tháng <?php echo getCan(($lDateLC->year*12 + $lDateLC->month + 3) % 10)." ".getChi(($lDateLC->month+1)%12);?>
 	</div>
 	<div style="float:right;width:40%;text-align:right;" >

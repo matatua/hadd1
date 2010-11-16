@@ -1,7 +1,5 @@
-var TUAN = new Array("Ch\u1EE7 Nh\u1EADt", "Th\u1EE9 Hai", "Th\u1EE9 Ba", "Th\u1EE9 T\u01B0", "Th\u1EE9 N\u0103m", "Th\u1EE9 S\341u", "Th\u1EE9 B\u1EA3y");
+
 var THANG = new Array("Gi\u00EAng", "Hai", "Ba", "T\u01B0", "N\u0103m", "S\u00E1u", "B\u1EA3y", "T\u00E1m", "Ch\u00EDn", "M\u01B0\u1EDDi", "M\u1ED9t", "Ch\u1EA1p");
-var CAN = new Array("Gi\341p", "\u1EA4t", "B\355nh", "\u0110inh", "M\u1EADu", "K\u1EF7", "Canh", "T\342n", "Nh\342m", "Qu\375");
-var CHI = new Array("T\375", "S\u1EEDu", "D\u1EA7n", "M\343o", "Th\354n", "T\u1EF5", "Ng\u1ECD", "M\371i", "Th\342n", "D\u1EADu", "Tu\u1EA5t", "H\u1EE3i");
 var GIO_HD = new Array("110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011");
 var TIETKHI = new Array("Xu\u00E2n ph\u00E2n", "Thanh minh", "C\u1ED1c v\u0169", "L\u1EADp h\u1EA1", "Ti\u1EC3u m\u00E3n", "Mang ch\u1EE7ng",
 	"H\u1EA1 ch\u00ED", "Ti\u1EC3u th\u1EED", "\u0110\u1EA1i th\u1EED", "L\u1EADp thu", "X\u1EED th\u1EED", "B\u1EA1ch l\u1ED9",
@@ -71,11 +69,6 @@ function showDayInfo(cellId, dd, mm, yy, leap, length, jd, sday, smonth, syear) 
 	//document.NaviForm.submit();
 }
 
-
-
-function getYearCanChi(year) {
-	return CAN[(year+6) % 10] + " " + CHI[(year+8) % 12];
-}
 
 /*
  * Can cua gio Chinh Ty (00:00) cua ngay voi JDN nay
@@ -309,7 +302,15 @@ function jdn2day(jd) {
 }
 
 // HADD
+var CAN = new Array("Gi\341p", "\u1EA4t", "B\355nh", "\u0110inh", "M\u1EADu", "K\u1EF7", "Canh", "T\342n", "Nh\342m", "Qu\375");
+var CHI = new Array("T\375", "S\u1EEDu", "D\u1EA7n", "M\343o", "Th\354n", "T\u1EF5", "Ng\u1ECD", "M\371i", "Th\342n", "D\u1EADu", "Tu\u1EA5t", "H\u1EE3i");
+var TUAN = new Array("Ch\u1EE7 Nh\u1EADt", "Th\u1EE9 Hai", "Th\u1EE9 Ba", "Th\u1EE9 T\u01B0", "Th\u1EE9 N\u0103m", "Th\u1EE9 S\341u", "Th\u1EE9 B\u1EA3y");
+
 var TABLE_ID = 'tableCal';
+function getYearCanChi(year) {
+	return CAN[(year+6) % 10] + " " + CHI[(year+8) % 12];
+}
+
 function goTo(dd, mm, yy){
 	ajaxpage('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, TABLE_ID);
 }
@@ -345,25 +346,27 @@ function selectCell(cellId) {
 	document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
 }
 
-function selectDay(cellId) {	
+function selectDay(cellId,dd,jd,ngayam,ta,na) {	
 	selectCell(cellId);
-	
+	document.getElementById("ngayDuongId").innerHTML = dd;
+	document.getElementById("thuId").innerHTML = TUAN[(jd+1)%7];
+	document.getElementById("ngayamId").innerHTML = ngayam;
+	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
+	document.getElementById("canchingay").innerHTML = 'Ng\u00E0y '+ngay;
+	var thang = CAN[(na*12+ta+3) % 10] + " " + CHI[(ta+1)%12];
+	document.getElementById("canchithang").innerHTML = 'Th\u00E1ng '+thang;
+	document.getElementById("namam").innerHTML = 'N\u0103m '+getYearCanChi(na);
+
 	/*
 	//alert('Cell '+cellId+': '+dd+'/'+mm+'/'+yy+" AL = "+sday+"/"+smonth+"/"+syear);
 	document.NaviForm.dd.value = sday;
-	//document.getElementById("thangduong").innerHTML = 'Tháng '+smonth+' năm '+syear;
-	document.getElementById("ngayduong").innerHTML = sday;
-	var dayOfWeek = TUAN[(jd + 1) % 7];
-	document.getElementById("thuduong").innerHTML = dayOfWeek;
-	document.getElementById("ngayam").innerHTML = dd;
+	//document.getElementById("thangduong").innerHTML = 'Tháng '+smonth+' năm '+syear;		
+	
 	var nhuan = (leap == 1) ? ' nhu\u1EADn' : '';
 	var tenthang = 'Th\u00E1ng '+THANG[mm-1]+nhuan+(length == 30 ? ' (\u0110)' : ' (T)');
 	document.getElementById("thangam").innerHTML = tenthang;
-	document.getElementById("namam").innerHTML = 'N\u0103m '+getYearCanChi(yy);
-	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
-	document.getElementById("canchithang").innerHTML = 'Th\u00E1ng '+thang;
-	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
-	document.getElementById("canchingay").innerHTML = 'Ng\u00E0y '+ngay;
+	
+	
 	document.getElementById("canchigio").innerHTML = 'Gi\u1EDD '+getCanHour0(jd)+' '+CHI[0];
 	document.getElementById("tietkhi").innerHTML = 'Ti\u1EBFt '+TIETKHI[getSolarTerm(jd+1, 7.0)];
 	document.getElementById("dayinfo").innerHTML = getDayInfo(dd, mm);
