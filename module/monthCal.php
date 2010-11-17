@@ -176,7 +176,7 @@ function findLunarDate($jd, $ly) {
 	$i = sizeof($ly)-1;
 	while ($jd < $ly[$i]->jd) {
 		$i--;
-	}
+	};
 	$off = $jd - $ly[$i]->jd;	
 	$ret = new LunarDate($ly[$i]->day+$off, $ly[$i]->month, $ly[$i]->year, $ly[$i]->leap, $jd, $ly[$i]->monthLenght);
 	return $ret;
@@ -250,12 +250,13 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 			array_push($lDates,findLunarDate($i, $ly1));
 		}
 	} else if ($jd1 < $tet1 && $tet1 <= $jd2) { /* tet(yy-1) < jd1 < tet1 <= jd2 < tet(yy+1) */
-		$ly2 = getYearInfo($yy - 1);
+		$ly1 = getYearInfo($yy - 1);
+		$ly2 = getYearInfo($yy);
 		for ($i = $jd1; $i < $tet1; $i++) {
-			array_push($lDates,findLunarDate($i, $ly2));
+			array_push($lDates,findLunarDate($i, $ly1));
 		}
 		for ($i = $tet1; $i < $jd2; $i++) {
-			array_push($lDates, findLunarDate($i, $ly1));
+			array_push($lDates, findLunarDate($i, $ly2));
 		}
 	}
 	

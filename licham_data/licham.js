@@ -335,7 +335,7 @@ function goToNextMonth(dd, mm, yy) {
 	if(month == 0)
 		month = 12;
 	else if(month == 1)
-		year = yy + 1;
+		year = yy + 1;	
 	goTo(dd,month,year);
 }
 function selectCell(cellId) {
