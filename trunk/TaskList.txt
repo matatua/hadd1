@@ -1,4 +1,3 @@
-- Bug khi bam Next vao t2/2011: loi hien thang am, can chi thang, vv
 - Tiet khi
 - Thang Nhuan
 - Chuc nang "In trang nay"
