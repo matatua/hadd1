@@ -148,11 +148,29 @@ Lịch Âm Việt Nam
 
 <script language="JavaScript" src="licham_data/licham.js" type="text/javascript"></script>
 
+
 <link rel="stylesheet" type="text/css" href="licham_data/licham.css">
 	<div id="tableCal"></div>
 </div>
 <script language="JavaScript" type="text/javascript">		
 	ajaxpage('module/monthCal.php', 'tableCal');	
 </script>
-
+<div style="width:808px">
+	<div style="width:200px">
+		<div style="width:100%">
+		<div id="currentYear"></div>
+		</div>
+		<div style="width:100%">
+			<div id="year0" style="width:25%;float:left;">a</div>
+			<div id="year1" style="width:25%;float:left;">b</div>
+			<div id="year2" style="width:25%;float:left;"></div>
+			<div id="year3" style="width:25%;float:left;"></div>
+		</div>
+		
+	</div>
+</div>
+<script language="JavaScript" src="licham_data/year.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">			
+	iniYear(<?php echo date("Y",time()); ?>);
+</script>
 </body></html>
