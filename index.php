@@ -71,6 +71,11 @@
 -->
 
 <!-- Hadd -->
+<script language="JavaScript" src="js/jquery.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/cufon-yui.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/Snell_italic_400.font.js" type="text/javascript"></script>
+
+
 <script type="text/javascript">
 
 /***********************************************
@@ -161,8 +166,8 @@ Lịch Âm Việt Nam
 		<div id="currentYear"></div>
 		</div>
 		<div style="width:100%">
-			<div id="year0" style="width:25%;float:left;">a</div>
-			<div id="year1" style="width:25%;float:left;">b</div>
+			<div id="year0" style="width:25%;float:left;"></div>
+			<div id="year1" style="width:25%;float:left;"></div>
 			<div id="year2" style="width:25%;float:left;"></div>
 			<div id="year3" style="width:25%;float:left;"></div>
 		</div>
@@ -172,5 +177,8 @@ Lịch Âm Việt Nam
 <script language="JavaScript" src="licham_data/year.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript">			
 	iniYear(<?php echo date("Y",time()); ?>);
+</script>
+<script type="text/javascript">
+	Cufon.replace('#thangDuongId'); // Requires a selector engine for IE 6-7, see above
 </script>
 </body></html>
