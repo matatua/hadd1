@@ -177,7 +177,7 @@ function findLunarDate($jd, $ly) {
 	while ($jd < $ly[$i]->jd) {
 		$i--;
 	};
-	$off = $jd - $ly[$i]->jd;	
+	$off = $jd - $ly[$i]->jd;
 	$ret = new LunarDate($ly[$i]->day+$off, $ly[$i]->month, $ly[$i]->year, $ly[$i]->leap, $jd, $ly[$i]->monthLenght);
 	return $ret;
 }
@@ -268,6 +268,7 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$duong = 0;
 	$jdnLC = jdn($dd,$mm,$yy);
 	$thuLC = getThu(($jdnLC+1)%7);
+	$ly1 = getYearInfo($yy);
 	$lDateLC = findLunarDate($jdnLC,$ly1);
 	$startCalTableRow = "<div class='calTableRow'>";	
 	for($row = 0; $row < 6; $row++){
@@ -299,11 +300,13 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 				}
 				$duong2++;
 				$duong = $duong2;
-				$disableClass = '';
+				$disableClass = '';	
+				$parameter = $index.",".$duong.",".$ld->jd.",".$ld->day.",".$ld->month.",".$ld->year.",".$ld->leap.",".$ld->monthLenght;
+				$function = "selectDay(".$parameter.");";
 				if($duong2==$dd){
 					$style1 = "style='background: #FFF000;'";
+					$hiddenPara = "<input type='hidden' value='".$parameter."' name='hiddenPara' id='hiddenPara' />";
 				}
-				$function = "selectDay(".$index.",".$duong.",".$ld->jd.",".$ld->day.",".$ld->month.",".$ld->year.",".$ld->leap.",".$ld->monthLenght.");";
 			} else {
 				$duong3++;
 				$duong = $duong3;
@@ -323,16 +326,16 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 	$calTable.="</select><input name=\"yearLC\" id=\"yearLCID\" type=\"text\" value=\"".$CURRENT_YY."\" maxlength=\"4\" style=\"width:90px;\"/><button type=\"button\" onClick=\"javascript:goToNextMonth(1,".$mm.",".$yy.")\" style=\"float:right;\">Tháng sau</button></div>";
 	$calTable.=$startCalTableRow."<a title=\"Xem ngày hôm nay\" style=\"font-weight: bold;\" href='javascript:goTo(".$CURRENT_DD.",".$CURRENT_MM.",".$CURRENT_YY.");'>Hôm nay: </a></br>".layNgayDuongNgayAm($CURRENT_DD,$CURRENT_MM,$CURRENT_YY)."</div>";
 	echo $calTable;	
-	
+	echo $hiddenPara;
 ?>
 </div>
 <div style="float:right; width:50%;" >
 <div style="float:left;width:380px;text-align:center;" >
-	<div id="thangDuongId" style="height:50px;" ><?php echo getThang($mm); ?></div>
+	<div id="thangDuongId" style="height:50px;font-size:20pt;font-weight:bold;color:blue;" ><?php echo getThang($mm); ?></div>
 	<div id="ngayDuongId" style="height:100px;font-size:50pt;font-weight:bold;"><?php echo $dd; ?></div>
-	<div id="thuId" style="height:20px;"><?php echo $thuLC; ?></div>	
+	<div id="thuId" style="height:20px;font-size:18pt;"></div>	
 </div>
-<div style="float:right;width: auto;height: auto;" >
+<div id="namDuongId" style="float:right;width: auto;height: auto;font-size:15pt;" >
 <?php
 	for($i=0;$i<strlen($yy);$i++) {
 		echo $yy{$i}."</br>";
@@ -340,11 +343,9 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 ?>
 </div>
 <div style="float:left;width:100%;padding-left:30px;" >
-	<div id="thangam" style="float:left;width:60%;text-align:left;" >
-		<?php echo getThangAm($lDateLC->month).($lDateLC->monthLenght == 30 ? '(Đủ)' : '(Thiếu)'); ?>
+	<div id="thangam" style="float:left;width:60%;text-align:left;" >		
 	</div>
-	<div id="namam" style="float:right;width:40%;text-align:right;" >
-		Năm <?php echo getCan(($lDateLC->year+6)%10)." ".getChi(($lDateLC->year+8)%12);?>
+	<div id="namam" style="float:right;width:40%;text-align:right;" >		
 	</div>
 </div>
 <div style="float:left;width:40%;text-align:left;padding-left:30px;" >

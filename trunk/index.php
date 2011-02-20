@@ -71,7 +71,7 @@
 -->
 
 <!-- Hadd -->
-<script language="JavaScript" src="js/jquery.js" type="text/javascript"></script>
+<script language="JavaScript" src="http://code.jquery.com/jquery-1.4.4.js" type="text/javascript"></script>
 <script language="JavaScript" src="js/cufon-yui.js" type="text/javascript"></script>
 <script language="JavaScript" src="js/Snell_italic_400.font.js" type="text/javascript"></script>
 
@@ -158,7 +158,16 @@ Lịch Âm Việt Nam
 	<div id="tableCal"></div>
 </div>
 <script language="JavaScript" type="text/javascript">		
-	ajaxpage('module/monthCal.php', 'tableCal');	
+	//ajaxpage('module/monthCal.php', 'tableCal');
+	$('#tableCal').load('http://localhost/hadd1/module/monthCal.php', function() {
+		selectDayByParameter($('#hiddenPara').val());
+	});
+	
+	//replaceFont();
+	//$('#tableCal').load('module/monthCal.php', function() {
+	//	replaceFont();
+	//});
+
 </script>
 <div style="width:808px">
 	<div style="width:200px">
@@ -177,8 +186,5 @@ Lịch Âm Việt Nam
 <script language="JavaScript" src="licham_data/year.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript">			
 	iniYear(<?php echo date("Y",time()); ?>);
-</script>
-<script type="text/javascript">
-	Cufon.replace('#thangDuongId'); // Requires a selector engine for IE 6-7, see above
 </script>
 </body></html>

@@ -312,7 +312,10 @@ function getYearCanChi(year) {
 }
 
 function goTo(dd, mm, yy){
-	ajaxpage('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, TABLE_ID);
+	
+	$('#tableCal').load('http://localhost/hadd1/module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
+		selectDayByParameter($('#hiddenPara').val());
+	});
 }
 function selectMonth(){
 	var sel = document.getElementById("cThang");
@@ -345,7 +348,10 @@ function selectCell(cellId) {
 	}
 	document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
 }
-
+function selectDayByParameter(parameter){
+	var paraArr=parameter.split(",");
+	selectDay(paraArr[0],paraArr[1],paraArr[2],paraArr[3],paraArr[4],paraArr[5],paraArr[6],paraArr[7]);
+}
 function selectDay(cellId,dd,jd,ngayam,ta,na,leap,length) {	
 	selectCell(cellId);
 	document.getElementById("ngayDuongId").innerHTML = dd;
@@ -373,5 +379,12 @@ function selectDay(cellId,dd,jd,ngayam,ta,na,leap,length) {
 	document.getElementById("dayinfo").innerHTML = getDayInfo(dd, mm);
 	document.getElementById("hoangdao").innerHTML = 'Gi\u1EDD ho\u00E0ng \u0111\u1EA1o: '+getGioHoangDao(jd);	
 	*/
-	
+	replaceFont();
+}
+
+function replaceFont(){
+	Cufon.replace('#thangam');
+	Cufon.replace('#thuId');
+	Cufon.replace('#thangDuongId');
+	Cufon.replace('#namam');
 }
