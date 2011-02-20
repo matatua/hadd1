@@ -313,7 +313,7 @@ function getYearCanChi(year) {
 
 function goTo(dd, mm, yy){
 	
-	$('#tableCal').load('http://localhost/hadd1/module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
+	$('#tableCal').load('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
 		selectDayByParameter($('#hiddenPara').val());
 	});
 }

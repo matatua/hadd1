@@ -159,7 +159,7 @@ Lịch Âm Việt Nam
 </div>
 <script language="JavaScript" type="text/javascript">		
 	//ajaxpage('module/monthCal.php', 'tableCal');
-	$('#tableCal').load('http://localhost/hadd1/module/monthCal.php', function() {
+	$('#tableCal').load('module/monthCal.php', function() {
 		selectDayByParameter($('#hiddenPara').val());
 	});
 	
