@@ -116,8 +116,10 @@ page_request.send(null)
 }
 
 function loadpage(page_request, containerid){
-if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1))
-document.getElementById(containerid).innerHTML=page_request.responseText
+if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1)){
+	document.getElementById(containerid).innerHTML=page_request.responseText;
+	replaceFont();
+}
 }
 
 function loadobjs(){
@@ -157,17 +159,14 @@ Lịch Âm Việt Nam
 <link rel="stylesheet" type="text/css" href="licham_data/licham.css">
 	<div id="tableCal"></div>
 </div>
-<script language="JavaScript" type="text/javascript">		
-	//ajaxpage('module/monthCal.php', 'tableCal');
-	$('#tableCal').load('module/monthCal.php', function() {
-		selectDayByParameter($('#hiddenPara').val());
-	});
-	
-	//replaceFont();
-	//$('#tableCal').load('module/monthCal.php', function() {
-	//	replaceFont();
-	//});
-
+<script language="JavaScript" type="text/javascript">
+	if(window.ActiveXObject){
+		ajaxpage('module/monthCal.php', 'tableCal');
+	} else {
+		$('#tableCal').load('module/monthCal.php', function() {
+			selectDayByParameter($('#hiddenPara').val());			
+		});
+	}	
 </script>
 <div style="width:808px">
 	<div style="width:200px">

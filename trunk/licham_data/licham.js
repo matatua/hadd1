@@ -312,10 +312,13 @@ function getYearCanChi(year) {
 }
 
 function goTo(dd, mm, yy){
-	
-	$('#tableCal').load('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
-		selectDayByParameter($('#hiddenPara').val());
-	});
+	if(window.ActiveXObject){
+		ajaxpage('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, TABLE_ID);
+	} else {
+		$('#tableCal').load('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
+			selectDayByParameter($('#hiddenPara').val());
+		});
+	}
 }
 function selectMonth(){
 	var sel = document.getElementById("cThang");
@@ -344,9 +347,11 @@ function goToNextMonth(dd, mm, yy) {
 function selectCell(cellId) {
 	for (var i=0; i<41; i++) {
 	// ToDo: Change this to default background color
-		document.getElementById("cell"+i).style.backgroundColor = 'white';
+		//document.getElementById("cell"+i).style.backgroundColor = 'white';
+		$("#cell"+i).css("backgroundColor","white");
 	}
-	document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
+	//document.getElementById("cell"+cellId).style.backgroundColor = '#FFF000';
+	$("#cell"+cellId).css("backgroundColor","#FFF000");
 }
 function selectDayByParameter(parameter){
 	var paraArr=parameter.split(",");
@@ -354,26 +359,23 @@ function selectDayByParameter(parameter){
 }
 function selectDay(cellId,dd,jd,ngayam,ta,na,leap,length) {	
 	selectCell(cellId);
-	document.getElementById("ngayDuongId").innerHTML = dd;
-	document.getElementById("thuId").innerHTML = THU[(jd+1)%7];
-	document.getElementById("ngayamId").innerHTML = ngayam;
+	$("#ngayDuongId").html(dd);
+	$("#thuId").html(THU[(jd+1)%7]);	
+	$("#ngayamId").html(ngayam);
 	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
-	document.getElementById("canchingay").innerHTML = 'Ng\u00E0y '+ngay;
+	$("#canchingay").html('Ng\u00E0y '+ngay);
 	var thang = CAN[(na*12+ta+3) % 10] + " " + CHI[(ta+1)%12];
-	document.getElementById("canchithang").innerHTML = 'Th\u00E1ng '+thang;
-	document.getElementById("namam").innerHTML = 'N\u0103m '+getYearCanChi(na);
+	$("#canchithang").html('Th\u00E1ng '+thang);
+	$("#namam").html('N\u0103m '+getYearCanChi(na));
 	var nhuan = (leap == 1) ? ' nhu\u1EADn' : '';
 	var tenthang = 'Th\u00E1ng '+THANG[ta-1]+nhuan+(length == 30 ? ' (Đủ)' : ' (Thiếu)');
-	document.getElementById("thangam").innerHTML = tenthang;
-
+	$("#thangam").html(tenthang);
+		
 	/*
 	//alert('Cell '+cellId+': '+dd+'/'+mm+'/'+yy+" AL = "+sday+"/"+smonth+"/"+syear);
 	document.NaviForm.dd.value = sday;
 	//document.getElementById("thangduong").innerHTML = 'Tháng '+smonth+' năm '+syear;		
-	
-	
-	
-	
+		
 	document.getElementById("canchigio").innerHTML = 'Gi\u1EDD '+getCanHour0(jd)+' '+CHI[0];
 	document.getElementById("tietkhi").innerHTML = 'Ti\u1EBFt '+TIETKHI[getSolarTerm(jd+1, 7.0)];
 	document.getElementById("dayinfo").innerHTML = getDayInfo(dd, mm);

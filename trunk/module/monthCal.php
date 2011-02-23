@@ -333,7 +333,7 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 <div style="float:left;width:380px;text-align:center;" >
 	<div id="thangDuongId" style="height:50px;font-size:20pt;font-weight:bold;color:blue;" ><?php echo getThang($mm); ?></div>
 	<div id="ngayDuongId" style="height:100px;font-size:50pt;font-weight:bold;"><?php echo $dd; ?></div>
-	<div id="thuId" style="height:20px;font-size:18pt;"></div>	
+	<div id="thuId" style="height:20px;font-size:18pt;"><?php echo $thuLC; ?></div>	
 </div>
 <div id="namDuongId" style="float:right;width: auto;height: auto;font-size:15pt;" >
 <?php
@@ -344,8 +344,10 @@ function layNgayDuongNgayAm($dd,$mm,$yy) {
 </div>
 <div style="float:left;width:100%;padding-left:30px;" >
 	<div id="thangam" style="float:left;width:60%;text-align:left;" >		
+		<?php echo getThangAm($lDateLC->month).($lDateLC->monthLenght == 30 ? '(Đủ)' : '(Thiếu)'); ?>
 	</div>
 	<div id="namam" style="float:right;width:40%;text-align:right;" >		
+		Năm <?php echo getCan(($lDateLC->year+6)%10)." ".getChi(($lDateLC->year+8)%12);?>
 	</div>
 </div>
 <div style="float:left;width:40%;text-align:left;padding-left:30px;" >
