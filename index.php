@@ -16,7 +16,7 @@
    color:red;
    cursor:pointer;
    cursor:hand;
-}    
+} 
 .colT2T6 {
    float: left;   
    width: 57px;
@@ -24,7 +24,7 @@
    margin: 0;
    color:black;
    cursor:pointer;
-   cursor:hand;
+   cursor:hand;   
 }
 
 .duongDis {
@@ -62,7 +62,21 @@
 	background: #FFFFCC;
 	font-weight: bold;	
 }
-</style></head><body>
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16952152-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head><body>
 
 <!--
 
@@ -160,13 +174,13 @@ Lịch Âm Việt Nam
 	<div id="tableCal"></div>
 </div>
 <script language="JavaScript" type="text/javascript">
-	if(window.ActiveXObject){
+	//if(window.ActiveXObject){
 		ajaxpage('module/monthCal.php', 'tableCal');
-	} else {
-		$('#tableCal').load('module/monthCal.php', function() {
-			selectDayByParameter($('#hiddenPara').val());			
-		});
-	}	
+	//} else {
+		//$('#tableCal').load('module/monthCal.php', function() {
+			//selectDayByParameter($('#hiddenPara').val());			
+		//});
+	//}	
 </script>
 <div style="width:808px">
 	<div style="width:200px">
