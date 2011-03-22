@@ -1,11 +1,13 @@
 - Tiet khi
-- Thang Nhuan
+- Thang Nhuan?
 - Chuc nang "In trang nay"
 - Chuc nang "Gui Email"
 - Chia se & Like tren Fb, zing, ...
-Ngay dac biet:
+* Ngay dac biet:
 - Check thang ay co ngay gi dac biet? sau do dua vao nam de tim Id cua o day
-
+* Mau sac cua ngay
+* Tab tren:  lich thang/ lich nam
+* Tab duoi: ngay tot trong thang/ chi tiet ngay tot
 2. Luu giu 2 thong tin: - Ngay thang nam hien tai(thoi gian cua server)
 						- Ngay thang nam nguoi dung dang lua chon(?)
 						- Ngay dj dau tien

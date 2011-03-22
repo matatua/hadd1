@@ -312,13 +312,13 @@ function getYearCanChi(year) {
 }
 
 function goTo(dd, mm, yy){
-	if(window.ActiveXObject){
+	//if(window.ActiveXObject){
 		ajaxpage('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, TABLE_ID);
-	} else {
-		$('#tableCal').load('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
-			selectDayByParameter($('#hiddenPara').val());
-		});
-	}
+	//} else {
+		//$('#tableCal').load('module/monthCal.php?dd=' + dd + '&mm=' + mm + '&yy=' + yy, function() {
+			//selectDayByParameter($('#hiddenPara').val());
+		//});
+	//}
 }
 function selectMonth(){
 	var sel = document.getElementById("cThang");
